@@ -33,3 +33,10 @@ main {
   right: 200px;
   bottom: 100px;
 }
+
+.spell {
+  position: relative;
+  right: 150px;
+  bottom: 280px;
+  max-width: 250px;
+}
