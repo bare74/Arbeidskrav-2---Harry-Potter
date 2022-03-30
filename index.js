@@ -11,10 +11,17 @@ severus.append(severusImgContainer, severusName, severusAge);
 severusImgContainer.append(severusIgm);
 
 function generateRandomStudents(arr) {
+    const pupilsContainer = document.querySelector('.pupils-container');
+
     for (let i = 0; i <= 9; i++) {
         const randomNumber = Math.round(Math.random() * 101);
         if (arr.indexOf(randomNumber) === -1) {
             console.log(arr[randomNumber]);
+            pupilsContainer.innerHTML += `
+                <div>
+                    <p>${arr[randomNumber].name}</p>
+                </div>
+            `;
         }
     }
 }
