@@ -18,8 +18,10 @@ function generateRandomStudents(arr) {
         if (arr.indexOf(randomNumber) === -1) {
             console.log(arr[randomNumber]);
             pupilsContainer.innerHTML += `
-                <div>
+                <div class='student-container'>
+                    <img class='student-img' src=${arr[randomNumber].image ? arr[randomNumber].image : "./assets/avatar.png"} />
                     <p>${arr[randomNumber].name}</p>
+                    <p>${arr[randomNumber].house}</p>
                 </div>
             `;
         }
