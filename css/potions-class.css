@@ -1,0 +1,35 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.teacher-card {
+  background-color: rgb(242, 242, 242);
+  width: 325px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  margin-top: 50px;
+}
+
+.start-class-btn {
+  max-width: 325px;
+}
+
+.bubble-container {
+  position: absolute;
+}
+
+.bubble-container-hidden {
+  display: none;
+}
+
+.talking-bubble {
+  width: 300px;
+  height: 230px;
+  position: relative;
+  right: 200px;
+  bottom: 100px;
+}

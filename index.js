@@ -27,13 +27,13 @@ async function fetchData() {
 fetchData();
 
 function showBubble() {
-    const test = document.getElementById('test');
-    test.classList.remove('test-hidden');
+    const talkingBubble = document.getElementById('talking-bubble-container');
+    talkingBubble.classList.remove('bubble-container-hidden');
 }
 
 function hideBubble() {
-    const test = document.getElementById('test');
-    test.classList.add('test-hidden');
+    const talkingBubble = document.getElementById('talking-bubble-container');
+    talkingBubble.classList.add('bubble-container-hidden');
 }
 
 severusIgm.addEventListener('mouseover', showBubble);
