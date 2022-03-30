@@ -11,10 +11,11 @@ severus.append(severusImgContainer, severusName, severusAge);
 severusImgContainer.append(severusIgm);
 
 function generateRandomStudents(arr) {
-    const random = Math.round(Math.random() * 101);
-
     for (let i = 0; i <= 9; i++) {
-        console.log(arr[random]);
+        const randomNumber = Math.round(Math.random() * 101);
+        if (arr.indexOf(randomNumber) === -1) {
+            console.log(arr[randomNumber]);
+        }
     }
 }
 
