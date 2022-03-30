@@ -3,10 +3,20 @@ const severusData = [];
 const students = [];
 
 const severus = document.getElementById('severus-card');
+const severusImgContainer = document.createElement('div');
 const severusIgm = document.createElement('img');
 const severusName = document.createElement('p');
 const severusAge = document.createElement('p');
-severus.append(severusIgm, severusName, severusAge);
+severus.append(severusImgContainer, severusName, severusAge);
+severusImgContainer.append(severusIgm);
+
+function generateRandomStudents(arr) {
+    const random = Math.round(Math.random() * 101);
+
+    for (let i = 0; i <= 9; i++) {
+        console.log(arr[random]);
+    }
+}
 
 async function fetchData() {
     try {
@@ -21,12 +31,13 @@ async function fetchData() {
         });
 
         console.log(severusData);
-        console.log(students);
 
         severusIgm.src = severusData[0].image;
         severusName.textContent = 'Navn: ' + severusData[0].name;
         severusAge.textContent = `Alder: ${2022 - severusData[0].yearOfBirth
             } år`;
+
+        generateRandomStudents(students);
     }
     catch (err) {
         console.log(err);
@@ -38,14 +49,12 @@ fetchData();
 function showBubble() {
     const talkingBubble = document.getElementById('talking-bubble-container');
     talkingBubble.classList.remove('bubble-container-hidden');
-    console.log('fired');
 }
 
 function hideBubble() {
     const talkingBubble = document.getElementById('talking-bubble-container');
     talkingBubble.classList.add('bubble-container-hidden');
-    console.log('fired leave');
 }
 
-severusIgm.addEventListener('mouseenter', showBubble);
-severusIgm.addEventListener('mouseleave', hideBubble);
+severusImgContainer.addEventListener('mouseenter', showBubble);
+severus.addEventListener('mouseleave', hideBubble);
