@@ -6,10 +6,14 @@ searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
 
   const filterCharacters = charactersApi.filter((characters) => {
-    return characters.name.toLowerCase().includes(searchString);
+    return (
+      characters.name.toLowerCase().includes(searchString) ||
+      characters.house.toLowerCase().includes(searchString) ||
+      characters.patronus.toLowerCase().includes(searchString)
+    );
   });
   if (filterCharacters == "") {
-    alert("Please type a characters races");
+    alert("Please type a Harry Potter characters");
   }
 
   displayCharacters(filterCharacters);
