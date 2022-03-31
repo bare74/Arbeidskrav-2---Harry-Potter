@@ -16,21 +16,24 @@ function clearItems(el) {
     el.innerHTML = '';
 }
 
+function deleteStudent(el, i) {
+    el[i];
+}
+
 function generateRandomStudents(arr) {
     const pupilsContainer = document.querySelector('.pupils-container');
 
     clearItems(pupilsContainer);
 
     for (let i = 0; i <= 9; i++) {
-        const randomNumber = Math.round(Math.random() * 101);
+        let randomNumber = Math.round(Math.random() * 101);
 
         if (arr.indexOf(randomNumber) === -1) {
-            console.log(arr[randomNumber]);
             pupilsContainer.innerHTML += `
                 <div class='student-container'>
-                    <img class='student-img' src=${arr[randomNumber].image ? arr[randomNumber].image : "./assets/avatar.png"} />
+                    <img class='student-img' src=${!arr[randomNumber].image ? "./assets/avatar.png" : arr[randomNumber].image} />
                     <p>Navn: ${arr[randomNumber].name}</p>
-                    <p>Hus: ${arr[randomNumber].house}</p>
+                    <p>Hus: ${arr[randomNumber].house ? arr[randomNumber].house : 'Intet hus'}</p>
                     <button class='delete-student-btn'>Slett Elev</button>
                 </div>
             `;
@@ -40,10 +43,26 @@ function generateRandomStudents(arr) {
                 const y = Math.floor(Math.random() * 100 + 80);
                 const z = Math.floor(Math.random() * 100 + 80);
                 const bgColor = "rgb(" + x + "," + y + "," + z + ")";
-
-                console.log(bgColor);
-
                 background.style.background = bgColor;
+            });
+
+            document.querySelectorAll('.delete-student-btn').forEach((btn, i) => {
+                btn.addEventListener('click', () => {
+                    const students = document.querySelectorAll('.student-container');
+
+                    randomNumber = Math.round(Math.random() * 101);
+
+                    function test() {
+                        console.log(i);
+                    }
+
+                    students[i].innerHTML = `
+                        <img class='student-img' src=${!arr[randomNumber].image ? "./assets/avatar.png" : arr[randomNumber].image} />
+                        <p>Navn: ${arr[randomNumber].name}</p>
+                        <p>Hus: ${arr[randomNumber].house ? arr[randomNumber].house : 'Intet hus'}</p>
+                        <button onclick=${test()} class='delete-student-btn'>Slett Elev</button>
+                    `;
+                });
             });
         }
     }
@@ -60,8 +79,6 @@ async function fetchData() {
                 students.push(student);
             }
         });
-
-        console.log(severusData);
 
         severusIgm.src = severusData[0].image;
         severusName.textContent = 'Navn: ' + severusData[0].name;
