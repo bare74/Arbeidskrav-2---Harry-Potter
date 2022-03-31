@@ -1,5 +1,6 @@
 const characterList = document.getElementById("characterList");
 const searchBar = document.getElementById("searchBar");
+
 let charactersApi = [];
 
 searchBar.addEventListener("keyup", (e) => {
@@ -33,19 +34,20 @@ const displayCharacters = (characters) => {
   const htmlString = characters
     .map((characters) => {
       if (characters.hogwartsStaff === true) {
-        //     if (characters.image === "") {
-        //       return `<li class="characters">
-        //     <img class "missing-characters src="./img/hp.png" alt="Missing img">
-        // </li>`;
-        //     }
-        return `
-            <li class="characters">
-                <h4>${characters.name}</h4>
-                <p>${characters.house}</p>
-                <p id="description">${characters.patronus}</p>
-                <img src="${characters.image}"></img>
-            </li>
-        `;
+        if (characters.image === "") {
+          return `<li class="characters">
+                    <h4>${characters.name}</h4>
+                    <p>${characters.house}</p>
+                    <p id="description">${characters.patronus}</p>
+                   <img class "missing-characters src="./assets/avatar.png" alt="Harry Potter characters"></img>
+                </li>`;
+        }
+        return `<li class="characters">
+                  <h4>${characters.name}</h4>
+                  <p>${characters.house}</p>
+                  <p id="description">${characters.patronus}</p>
+                  <img src="${characters.image}"></img>
+               </li>`;
       }
     })
 
@@ -54,3 +56,17 @@ const displayCharacters = (characters) => {
 };
 
 loadCharacters();
+
+// let test = document.getElementById("h4");
+
+// test.addEventListener("mouseover", function (event) {
+
+//   event.target.style.color = "red";
+// });
+
+// test.addEventListener("mouseout", function (event) {
+//   event.target.style.color = "black";
+// });
+
+//  <p id="description">${characters.patronus}</p>
+// <p id="description">${characters.patronus}</p>
