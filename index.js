@@ -18,16 +18,21 @@ function clearItems(el) {
 
 function createStudent(arr, i) {
     const studentsActive = document.querySelectorAll('.student-container');
+    const userAnswer = prompt('Ønsker du å slette? Skriv ja/nei');
 
-    studentsActive[i].innerHTML = `
+    if (userAnswer === null || userAnswer.toLowerCase() !== 'ja') {
+        return;
+    } else {
+        studentsActive[i].innerHTML = `
         <img class='student-img' src=${!arr[randomNumber].image ? "./assets/avatar.png" : arr[randomNumber].image} />
         <p>Navn: ${arr[randomNumber].name}</p>
         <p>Hus: ${arr[randomNumber].house ? arr[randomNumber].house : 'Intet hus'}</p>
         <button class='delete-student-btn'>Slett Elev</button>
         `;
 
-    const deleteStudentBtn = document.querySelectorAll('.delete-student-btn');
-    deleteStudent(deleteStudentBtn);
+        const deleteStudentBtn = document.querySelectorAll('.delete-student-btn');
+        deleteStudent(deleteStudentBtn);
+    }
 }
 
 function deleteStudent(deleteBtn) {
@@ -68,6 +73,7 @@ function generateRandomStudents(arr) {
     }
 
     const deleteStudentBtn = document.querySelectorAll('.delete-student-btn');
+
     deleteStudent(deleteStudentBtn);
 }
 
