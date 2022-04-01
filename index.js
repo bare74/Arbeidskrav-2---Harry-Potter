@@ -16,8 +16,27 @@ function clearItems(el) {
     el.innerHTML = '';
 }
 
-function deleteStudent(el, i) {
-    el[i];
+function createStudent(arr, i) {
+    const studentsActive = document.querySelectorAll('.student-container');
+
+    studentsActive[i].innerHTML = `
+        <img class='student-img' src=${!arr[randomNumber].image ? "./assets/avatar.png" : arr[randomNumber].image} />
+        <p>Navn: ${arr[randomNumber].name}</p>
+        <p>Hus: ${arr[randomNumber].house ? arr[randomNumber].house : 'Intet hus'}</p>
+        <button class='delete-student-btn'>Slett Elev</button>
+        `;
+
+    const deleteStudentBtn = document.querySelectorAll('.delete-student-btn');
+    deleteStudent(deleteStudentBtn);
+}
+
+function deleteStudent(deleteBtn) {
+    deleteBtn.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+            randomNumber = Math.round(Math.random() * 101);
+            createStudent(students, i);
+        });
+    });
 }
 
 function generateRandomStudents(arr) {
@@ -31,12 +50,12 @@ function generateRandomStudents(arr) {
         if (arr.indexOf(randomNumber) === -1) {
             pupilsContainer.innerHTML += `
                 <div class='student-container'>
-                    <img class='student-img' src=${!arr[randomNumber].image ? "./assets/avatar.png" : arr[randomNumber].image} />
-                    <p>Navn: ${arr[randomNumber].name}</p>
-                    <p>Hus: ${arr[randomNumber].house ? arr[randomNumber].house : 'Intet hus'}</p>
-                    <button class='delete-student-btn'>Slett Elev</button>
+                <img class='student-img' src=${!arr[randomNumber].image ? "./assets/avatar.png" : arr[randomNumber].image} />
+                <p>Navn: ${arr[randomNumber].name}</p>
+                <p>Hus: ${arr[randomNumber].house ? arr[randomNumber].house : 'Intet hus'}</p>
+                <button class='delete-student-btn'>Slett Elev</button>
                 </div>
-            `;
+                `;
 
             document.querySelectorAll('.student-container').forEach(background => {
                 const x = Math.floor(Math.random() * 100 + 80);
@@ -45,27 +64,11 @@ function generateRandomStudents(arr) {
                 const bgColor = "rgb(" + x + "," + y + "," + z + ")";
                 background.style.background = bgColor;
             });
-
-            document.querySelectorAll('.delete-student-btn').forEach((btn, i) => {
-                btn.addEventListener('click', () => {
-                    const students = document.querySelectorAll('.student-container');
-
-                    randomNumber = Math.round(Math.random() * 101);
-
-                    function test() {
-                        console.log(i);
-                    }
-
-                    students[i].innerHTML = `
-                        <img class='student-img' src=${!arr[randomNumber].image ? "./assets/avatar.png" : arr[randomNumber].image} />
-                        <p>Navn: ${arr[randomNumber].name}</p>
-                        <p>Hus: ${arr[randomNumber].house ? arr[randomNumber].house : 'Intet hus'}</p>
-                        <button onclick=${test()} class='delete-student-btn'>Slett Elev</button>
-                    `;
-                });
-            });
         }
     }
+
+    const deleteStudentBtn = document.querySelectorAll('.delete-student-btn');
+    deleteStudent(deleteStudentBtn);
 }
 
 async function fetchData() {
@@ -89,6 +92,7 @@ async function fetchData() {
         generateStudentsBtn.addEventListener('click', () => {
             generateRandomStudents(students);
         });
+
     }
     catch (err) {
         console.log(err);
