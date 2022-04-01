@@ -25,6 +25,10 @@ main {
   gap: 15px;
 }
 
+.position-container {
+  position: relative;
+}
+
 .teacher-card > p {
   font-weight: bold;
 }
@@ -44,12 +48,8 @@ main {
 
 .bubble-container {
   position: absolute;
-  bottom: 635px;
-  right: 1320px;
-}
-
-.bubble-container-hidden {
-  display: none;
+  right: 225px;
+  top: 6px;
 }
 
 .talking-bubble {
@@ -89,4 +89,8 @@ main {
 .student-img {
   width: 180px;
   height: 227px;
+}
+
+.container-hidden {
+  display: none;
 }

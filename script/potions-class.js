@@ -96,6 +96,8 @@ async function fetchData() {
 
 
         generateStudentsBtn.addEventListener('click', () => {
+            const pupilsContainer = document.querySelector('.pupils-container');
+            pupilsContainer.classList.remove('container-hidden');
             generateRandomStudents(students);
         });
 
@@ -109,12 +111,12 @@ fetchData();
 
 function showBubble() {
     const talkingBubble = document.getElementById('talking-bubble-container');
-    talkingBubble.classList.remove('bubble-container-hidden');
+    talkingBubble.classList.remove('container-hidden');
 }
 
 function hideBubble() {
     const talkingBubble = document.getElementById('talking-bubble-container');
-    talkingBubble.classList.add('bubble-container-hidden');
+    talkingBubble.classList.add('container-hidden');
 }
 
 severusImgContainer.addEventListener('mouseenter', showBubble);

@@ -15,20 +15,25 @@
     <header></header>
     <main>
       <h1 class="potions-heading">Potions class</h1>
-      <div class="teacher-card" id="severus-card"></div>
-      <div
-        id="talking-bubble-container"
-        class="bubble-container bubble-container-hidden"
-      >
-        <img
-          src="./assets/speech-bubble-g2ad8c2501_640.png"
-          alt="Talking bubble"
-          class="talking-bubble"
-        />
-        <p class="spell">Expecto Patronum</p>
+
+      <div class="position-container">
+        <div
+          id="talking-bubble-container"
+          class="bubble-container container-hidden"
+        >
+          <img
+            src="./assets/speech-bubble-g2ad8c2501_640.png"
+            alt="Talking bubble"
+            class="talking-bubble"
+          />
+          <p class="spell">Expecto Patronum</p>
+        </div>
+
+        <div class="teacher-card" id="severus-card"></div>
       </div>
+
       <button class="start-class-btn">Start undervisning</button>
-      <div class="pupils-container"></div>
+      <div class="pupils-container container-hidden"></div>
     </main>
     <script src="script/potions-class.js"></script>
   </body>
