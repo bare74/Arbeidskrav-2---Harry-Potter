@@ -118,5 +118,5 @@ function hideBubble() {
 }
 
 severusImgContainer.addEventListener('mouseenter', showBubble);
-severus.addEventListener('mouseleave', hideBubble);
+severusImgContainer.addEventListener('mouseleave', hideBubble);
 

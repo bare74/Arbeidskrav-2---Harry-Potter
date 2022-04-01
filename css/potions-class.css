@@ -44,6 +44,8 @@ main {
 
 .bubble-container {
   position: absolute;
+  bottom: 635px;
+  right: 1320px;
 }
 
 .bubble-container-hidden {
@@ -53,17 +55,16 @@ main {
 .talking-bubble {
   width: 250px;
   height: 230px;
-  position: relative;
-  right: 180px;
-  bottom: 80px;
   transform: rotate(-12deg);
 }
 
 .spell {
-  position: relative;
   right: 120px;
   bottom: 240px;
   max-width: 250px;
+  position: relative;
+  bottom: 150px;
+  left: 50px;
 }
 
 .pupils-container {
