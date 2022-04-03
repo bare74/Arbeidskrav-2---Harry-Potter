@@ -1,5 +1,6 @@
 const characterList = document.getElementById("characterList");
 const searchBar = document.getElementById("searchBar");
+const userApi = "http://hp-api.herokuapp.com/api/characters";
 
 let charactersApi = [];
 
@@ -9,12 +10,11 @@ searchBar.addEventListener("keyup", (e) => {
   const filterCharacters = charactersApi.filter((characters) => {
     return (
       characters.name.toLowerCase().includes(searchString) ||
-      characters.house.toLowerCase().includes(searchString) ||
-      characters.patronus.toLowerCase().includes(searchString)
+      characters.house.toLowerCase().includes(searchString)
     );
   });
   if (filterCharacters == "") {
-    alert("Please type a Harry Potter characters");
+    alert("Please type a Harry Potter characters / House ");
   }
 
   displayCharacters(filterCharacters);
@@ -22,7 +22,7 @@ searchBar.addEventListener("keyup", (e) => {
 
 const loadCharacters = async () => {
   try {
-    const res = await fetch("http://hp-api.herokuapp.com/api/characters");
+    const res = await fetch(userApi);
     charactersApi = await res.json();
     displayCharacters(charactersApi);
   } catch (err) {
@@ -38,14 +38,14 @@ const displayCharacters = (characters) => {
           return `<li class="characters">
                     <h4>${characters.name}</h4>
                     <p>${characters.house}</p>
-                    <p id="description">${characters.patronus}</p>
+                    <span class="span">${characters.patronus}</span>
                    <img class "missing-characters src="./assets/avatar.png" alt="Harry Potter characters"></img>
                 </li>`;
         }
         return `<li class="characters">
                   <h4>${characters.name}</h4>
                   <p>${characters.house}</p>
-                  <p id="description">${characters.patronus}</p>
+                  <span class="span">${characters.patronus}</span>
                   <img src="${characters.image}"></img>
                </li>`;
       }
@@ -56,17 +56,3 @@ const displayCharacters = (characters) => {
 };
 
 loadCharacters();
-
-// let test = document.getElementById("h4");
-
-// test.addEventListener("mouseover", function (event) {
-
-//   event.target.style.color = "red";
-// });
-
-// test.addEventListener("mouseout", function (event) {
-//   event.target.style.color = "black";
-// });
-
-//  <p id="description">${characters.patronus}</p>
-// <p id="description">${characters.patronus}</p>
