@@ -1,6 +1,7 @@
 import { API } from '../script/index.js'
 const severusData = [];
 const students = [];
+let uniqueStudents = [];
 
 const generateStudentsBtn = document.querySelector('.start-class-btn');
 
@@ -16,7 +17,7 @@ function clearItems(el) {
     el.innerHTML = '';
 }
 
-function createStudent(arr, i) {
+function createNewStudent(arr, i) {
     const studentsActive = document.querySelectorAll('.student-container');
     const userAnswer = prompt('Ønsker du å slette? Skriv ja/nei');
 
@@ -24,10 +25,10 @@ function createStudent(arr, i) {
         return;
     } else {
         studentsActive[i].innerHTML = `
-        <img class='student-img' src=${!arr[randomNumber].image ? "./assets/avatar.png" : arr[randomNumber].image} />
-        <p>Navn: ${arr[randomNumber].name}</p>
-        <p>Hus: ${arr[randomNumber].house ? arr[randomNumber].house : 'Intet hus'}</p>
-        <button class='delete-student-btn'>Slett Elev</button>
+            <img class='student-img' alt='${!arr[randomNumber].image ? 'Missing image avatar' : arr[randomNumber].name + ' image'}' image' src=${!arr[randomNumber].image ? "./assets/avatar.png" : arr[randomNumber].image} />
+            <p>Navn: ${arr[randomNumber].name}</p>
+            <p>Hus: ${arr[randomNumber].house ? arr[randomNumber].house : 'Intet hus'}</p>
+            <button class='delete-student-btn'>Slett elev</button>
         `;
 
         const deleteStudentBtn = document.querySelectorAll('.delete-student-btn');
@@ -38,43 +39,81 @@ function createStudent(arr, i) {
 function deleteStudent(deleteBtn) {
     deleteBtn.forEach((btn, i) => {
         btn.addEventListener('click', () => {
-            randomNumber = Math.round(Math.random() * 101);
-            createStudent(students, i);
+            randomNumber = Math.round(Math.random() * (students.length - 1));
+            createNewStudent(students, i);
         });
     });
 }
 
-function generateRandomStudents(arr) {
+function generateRandomStudents() {
+    const studentsSet = new Set();
+
+    while (studentsSet.size < 10) {
+        let randomNumber = Math.round(Math.random() * (students.length - 1));
+        studentsSet.add(randomNumber);
+    }
+
+    uniqueStudents = [...studentsSet];
+    console.log(uniqueStudents);
+}
+
+function generateRandomColors(list) {
+    list.forEach(background => {
+        const bgColor = "hsl(" + 360 * Math.random() + ',' +
+            (25 + 70 * Math.random()) + '%,' +
+            (85 + 10 * Math.random()) + '%)';
+        background.style.background = bgColor;
+    });
+}
+
+function createStudentsCards() {
     const pupilsContainer = document.querySelector('.pupils-container');
 
     clearItems(pupilsContainer);
 
-    for (let i = 0; i <= 9; i++) {
-        let randomNumber = Math.round(Math.random() * 101);
+    generateRandomStudents();
 
-        if (arr.indexOf(randomNumber) === -1) {
-            pupilsContainer.innerHTML += `
-                <div class='student-container'>
-                <img class='student-img' src=${!arr[randomNumber].image ? "./assets/avatar.png" : arr[randomNumber].image} />
-                <p>Navn: ${arr[randomNumber].name}</p>
-                <p>Hus: ${arr[randomNumber].house ? arr[randomNumber].house : 'Intet hus'}</p>
-                <button class='delete-student-btn'>Slett Elev</button>
-                </div>
-                `;
+    uniqueStudents.forEach(student => {
+        pupilsContainer.innerHTML += `
+            <li class='student-container'>
+                <img class='student-img' alt='${!students[student].image ? 'Missing image avatar' : students[student].name + ' image'}' src=${!students[student].image ? "./assets/avatar.png" : students[student].image} />
+                <p>Navn: ${students[student].name}</p>
+                <p>Hus: ${students[student].house ? students[student].house : 'Intet hus'}</p>
+                <button class='delete-student-btn'>Slett elev</button>
+            </li>
+            `;
 
-            document.querySelectorAll('.student-container').forEach(background => {
-                const x = Math.floor(Math.random() * 100 + 80);
-                const y = Math.floor(Math.random() * 100 + 80);
-                const z = Math.floor(Math.random() * 100 + 80);
-                const bgColor = "rgb(" + x + "," + y + "," + z + ")";
-                background.style.background = bgColor;
-            });
-        }
-    }
+        const studentsActive = document.querySelectorAll('.student-container');
+
+        generateRandomColors(studentsActive);
+    });
 
     const deleteStudentBtn = document.querySelectorAll('.delete-student-btn');
 
     deleteStudent(deleteStudentBtn);
+}
+
+function filterStudents(data) {
+    data.filter((student) => {
+        if (student.hogwartsStudent === true) {
+            students.push(student);
+        }
+    });
+}
+
+function displayTeacherDetails(data) {
+    severusIgm.src = data[0].image;
+    severusName.textContent = 'Navn: ' + data[0].name;
+    severusAge.textContent = `Alder: ${2022 - data[0].yearOfBirth
+        } år`;
+}
+
+function displayStudentsHandler() {
+    generateStudentsBtn.addEventListener('click', () => {
+        const pupilsContainer = document.querySelector('.pupils-container');
+        pupilsContainer.classList.remove('container-hidden');
+        createStudentsCards();
+    });
 }
 
 async function fetchData() {
@@ -82,25 +121,9 @@ async function fetchData() {
         const response = await fetch(API);
         const data = await response.json();
         severusData.push(data[7]);
-
-        data.filter((student) => {
-            if (student.hogwartsStudent === true) {
-                students.push(student);
-            }
-        });
-
-        severusIgm.src = severusData[0].image;
-        severusName.textContent = 'Navn: ' + severusData[0].name;
-        severusAge.textContent = `Alder: ${2022 - severusData[0].yearOfBirth
-            } år`;
-
-
-        generateStudentsBtn.addEventListener('click', () => {
-            const pupilsContainer = document.querySelector('.pupils-container');
-            pupilsContainer.classList.remove('container-hidden');
-            generateRandomStudents(students);
-        });
-
+        filterStudents(data);
+        displayTeacherDetails(severusData);
+        displayStudentsHandler();
     }
     catch (err) {
         console.log(err);
@@ -121,4 +144,3 @@ function hideBubble() {
 
 severusImgContainer.addEventListener('mouseenter', showBubble);
 severusImgContainer.addEventListener('mouseleave', hideBubble);
-
