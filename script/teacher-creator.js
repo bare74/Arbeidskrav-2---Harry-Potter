@@ -1,6 +1,10 @@
-import { API } from "../script/index.js";
+// import { API } from "../script/index.js";
+
 const characterList = document.getElementById("characterList");
 const searchBar = document.getElementById("searchBar");
+const API = "http://hp-api.herokuapp.com/api/characters";
+const addCharacter = document.getElementById("characters-btn");
+addCharacter.addEventListener("click", addNewCharacter)
 
 let charactersApi = [];
 let y = [];
@@ -28,7 +32,7 @@ const loadCharacters = async () => {
 
     displayCharacters(charactersApi);
   } catch (err) {
-    console.error(err);
+    console.error("Dette er min", err);
   }
 };
 
@@ -59,19 +63,19 @@ const displayCharacters = (characters) => {
 
 loadCharacters();
 
-function addCharacter() {
+function addNewCharacter() {
   var newstaff = document.getElementById("characters-input").value;
   document.getElementById("characters-input").value = "";
-
   y.push({
     name: newstaff,
     hogwartsStaff: true,
     image:
-      (src = `https://w7.pngwing.com/pngs/7/618/png-transparent-man-illustration-avatar-icon-fashion-men-avatar-face-fashion-girl-heroes-thumbnail.png`),
+      (src=`https://w7.pngwing.com/pngs/7/618/png-transparent-man-illustration-avatar-icon-fashion-men-avatar-face-fashion-girl-heroes-thumbnail.png`),
   });
 
   var z = charactersApi.concat(y);
   console.log("test", z);
 
+ 
   displayCharacters(z);
 }
