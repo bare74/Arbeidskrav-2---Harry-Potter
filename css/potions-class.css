@@ -15,7 +15,6 @@ main {
 }
 
 .teacher-card {
-  background-color: rgb(242, 242, 242);
   width: 370px;
   display: flex;
   flex-direction: column;
@@ -23,6 +22,8 @@ main {
   padding: 25px;
   margin: 50px 0;
   gap: 15px;
+  box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
 }
 
 .position-container {
@@ -35,11 +36,15 @@ main {
 
 .start-class-btn {
   max-width: 325px;
+  padding: 16px 25px;
+}
+
+.delete-student-btn {
+  padding: 10px 25px;
 }
 
 .start-class-btn,
 .delete-student-btn {
-  padding: 10px 25px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
@@ -80,6 +85,8 @@ main {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 
 .student-container > p {
@@ -89,6 +96,7 @@ main {
 .student-img {
   width: 180px;
   height: 227px;
+  object-fit: cover;
 }
 
 .container-hidden {
