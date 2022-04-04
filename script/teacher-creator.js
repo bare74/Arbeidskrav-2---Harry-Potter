@@ -1,8 +1,9 @@
+import { API } from "../script/index.js";
 const characterList = document.getElementById("characterList");
 const searchBar = document.getElementById("searchBar");
-const userApi = "http://hp-api.herokuapp.com/api/characters";
 
 let charactersApi = [];
+let y = [];
 
 searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
@@ -22,8 +23,9 @@ searchBar.addEventListener("keyup", (e) => {
 
 const loadCharacters = async () => {
   try {
-    const res = await fetch(userApi);
+    const res = await fetch(API);
     charactersApi = await res.json();
+
     displayCharacters(charactersApi);
   } catch (err) {
     console.error(err);
@@ -56,3 +58,20 @@ const displayCharacters = (characters) => {
 };
 
 loadCharacters();
+
+function addCharacter() {
+  var newstaff = document.getElementById("characters-input").value;
+  document.getElementById("characters-input").value = "";
+
+  y.push({
+    name: newstaff,
+    hogwartsStaff: true,
+    image:
+      (src = `https://w7.pngwing.com/pngs/7/618/png-transparent-man-illustration-avatar-icon-fashion-men-avatar-face-fashion-girl-heroes-thumbnail.png`),
+  });
+
+  var z = charactersApi.concat(y);
+  console.log("test", z);
+
+  displayCharacters(z);
+}
