@@ -1,4 +1,4 @@
-import { API } from '../script/index.js'
+import { API } from '../script/index.js';
 const severusData = [];
 const students = [];
 let uniqueStudents = [];
@@ -24,6 +24,7 @@ function createNewStudent(arr, i) {
     if (userAnswer === null || userAnswer.toLowerCase() !== 'ja') {
         return;
     } else {
+        const randomNumber = Math.round(Math.random() * (students.length - 1));
         studentsActive[i].innerHTML = `
             <img class='student-img' alt='${!arr[randomNumber].image ? 'Missing image avatar' : arr[randomNumber].name + ' image'}' image' src=${!arr[randomNumber].image ? "./assets/avatar.png" : arr[randomNumber].image} />
             <p>Navn: ${arr[randomNumber].name}</p>
@@ -39,7 +40,6 @@ function createNewStudent(arr, i) {
 function deleteStudent(deleteBtn) {
     deleteBtn.forEach((btn, i) => {
         btn.addEventListener('click', () => {
-            randomNumber = Math.round(Math.random() * (students.length - 1));
             createNewStudent(students, i);
         });
     });
@@ -49,7 +49,7 @@ function generateRandomStudents() {
     const studentsSet = new Set();
 
     while (studentsSet.size < 10) {
-        let randomNumber = Math.round(Math.random() * (students.length - 1));
+        const randomNumber = Math.round(Math.random() * (students.length - 1));
         studentsSet.add(randomNumber);
     }
 
