@@ -1,4 +1,4 @@
-const API = 'http://hp-api.herokuapp.com/api/characters';
+import { API } from '../script/index.js'
 const severusData = [];
 const students = [];
 let uniqueStudents = [];
