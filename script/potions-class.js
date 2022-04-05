@@ -21,12 +21,23 @@ function createNewStudent(arr, i) {
     const studentsActive = document.querySelectorAll('.student-container');
     const randomNumber = Math.round(Math.random() * (students.length - 1));
 
+    uniqueStudents.splice(1, i);
+
+    generateRandomStudents();
+
+    console.log(uniqueStudents);
+
+    const newStudent = uniqueStudents[9];
+    console.log(newStudent);
+    uniqueStudents.splice(newStudent, i);
+
+
     studentsActive[i].innerHTML = `
-    <img class='student-img' alt='${!arr[randomNumber].image ? 'Missing image avatar' : arr[randomNumber].name + ' image'}' image' src=${!arr[randomNumber].image ? "./assets/avatar.png" : arr[randomNumber].image} />
-    <p>Navn: ${arr[randomNumber].name}</p>
-    <p>Hus: ${arr[randomNumber].house ? arr[randomNumber].house : 'Intet hus'}</p>
-    <button class='delete-student-btn'>Slett elev</button>
-    `;
+        <img class='student-img' alt='${!arr[uniqueStudents.indexOf(uniqueStudents[i])].image ? 'Missing image avatar' : arr[uniqueStudents.indexOf(uniqueStudents[i])].name + ' image'}' image' src=${!arr[uniqueStudents.indexOf(uniqueStudents[i])].image ? "./assets/avatar.png" : arr[uniqueStudents.indexOf(uniqueStudents[i])].image} />
+        <p>Navn: ${arr[uniqueStudents.indexOf(uniqueStudents[i])].name}</p>
+        <p>Hus: ${arr[uniqueStudents.indexOf(uniqueStudents[i])].house ? arr[uniqueStudents.indexOf(uniqueStudents[i])].house : 'Intet hus'}</p>
+        <button class='delete-student-btn'>Slett elev</button>
+        `;
 
     getUserInput(i);
 }
@@ -56,7 +67,7 @@ function generateRandomStudents() {
     const studentsSet = new Set();
 
     while (studentsSet.size < 10) {
-        let randomNumber = Math.round(Math.random() * (students.length - 1));
+        const randomNumber = Math.round(Math.random() * (students.length - 1));
         studentsSet.add(randomNumber);
     }
 
