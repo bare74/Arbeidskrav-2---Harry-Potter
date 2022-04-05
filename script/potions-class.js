@@ -19,22 +19,16 @@ function clearItems(el) {
 
 function createNewStudent(arr, i) {
     const studentsActive = document.querySelectorAll('.student-container');
-    const userAnswer = prompt('Ønsker du å slette? Skriv ja/nei');
+    const randomNumber = Math.round(Math.random() * (students.length - 1));
 
-    if (userAnswer === null || userAnswer.toLowerCase() !== 'ja') {
-        return;
-    } else {
-        const randomNumber = Math.round(Math.random() * (students.length - 1));
-        studentsActive[i].innerHTML = `
-            <img class='student-img' alt='${!arr[randomNumber].image ? 'Missing image avatar' : arr[randomNumber].name + ' image'}' image' src=${!arr[randomNumber].image ? "./assets/avatar.png" : arr[randomNumber].image} />
-            <p>Navn: ${arr[randomNumber].name}</p>
-            <p>Hus: ${arr[randomNumber].house ? arr[randomNumber].house : 'Intet hus'}</p>
-            <button class='delete-student-btn'>Slett elev</button>
-        `;
+    studentsActive[i].innerHTML = `
+    <img class='student-img' alt='${!arr[randomNumber].image ? 'Missing image avatar' : arr[randomNumber].name + ' image'}' image' src=${!arr[randomNumber].image ? "./assets/avatar.png" : arr[randomNumber].image} />
+    <p>Navn: ${arr[randomNumber].name}</p>
+    <p>Hus: ${arr[randomNumber].house ? arr[randomNumber].house : 'Intet hus'}</p>
+    <button class='delete-student-btn'>Slett elev</button>
+    `;
 
-        const deleteStudentBtn = document.querySelectorAll('.delete-student-btn');
-        deleteStudent(deleteStudentBtn);
-    }
+    getUserInput(i);
 }
 
 function deleteStudent(deleteBtn) {
@@ -45,16 +39,29 @@ function deleteStudent(deleteBtn) {
     });
 }
 
+function getUserInput(i) {
+    const userAnswer = prompt('Ønsker du å slette? Skriv ja/nei');
+
+    if (userAnswer === null || userAnswer.toLowerCase() !== 'j') {
+        return;
+    } else {
+        const deleteStudentBtn = document.querySelectorAll('.delete-student-btn');
+        console.log(deleteStudentBtn);
+        deleteStudentBtn[i].addEventListener('click', () => {
+            createNewStudent(students, i);
+        });
+    }
+}
+
 function generateRandomStudents() {
     const studentsSet = new Set();
 
     while (studentsSet.size < 10) {
-        const randomNumber = Math.round(Math.random() * (students.length - 1));
+        let randomNumber = Math.round(Math.random() * (students.length - 1));
         studentsSet.add(randomNumber);
     }
 
     uniqueStudents = [...studentsSet];
-    console.log(uniqueStudents);
 }
 
 function generateRandomColors(list) {
