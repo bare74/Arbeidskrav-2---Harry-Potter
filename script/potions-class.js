@@ -42,11 +42,10 @@ function deleteStudent(deleteBtn) {
 function getUserInput(i) {
     const userAnswer = prompt('Ønsker du å slette? Skriv ja/nei');
 
-    if (userAnswer === null || userAnswer.toLowerCase() !== 'j') {
+    if (userAnswer === null || userAnswer.toLowerCase() !== 'ja') {
         return;
     } else {
         const deleteStudentBtn = document.querySelectorAll('.delete-student-btn');
-        console.log(deleteStudentBtn);
         deleteStudentBtn[i].addEventListener('click', () => {
             createNewStudent(students, i);
         });
