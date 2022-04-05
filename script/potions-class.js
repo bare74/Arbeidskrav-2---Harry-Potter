@@ -48,21 +48,6 @@ function deleteStudent(deleteBtn) {
     });
 }
 
-function getUserInput(i) {
-    const userAnswer = prompt('Ønsker du å slette? Skriv ja/nei');
-
-    const deleteStudentBtn = document.querySelectorAll('.delete-student-btn');
-    deleteStudentBtn[i].addEventListener('click', () => {
-        createNewStudent(students, i);
-    });
-
-    if (userAnswer === null || userAnswer.toLowerCase() !== 'ja') {
-        return;
-    } else {
-        return;
-    }
-}
-
 function generateRandomStudents() {
     const studentsSet = new Set();
 
