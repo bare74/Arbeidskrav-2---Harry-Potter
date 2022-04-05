@@ -8,6 +8,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 50px;
 }
 
 .potions-heading {
@@ -49,6 +50,7 @@ main {
   border: none;
   cursor: pointer;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .bubble-container {
