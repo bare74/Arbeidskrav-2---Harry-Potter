@@ -21,14 +21,23 @@ function createNewStudent(arr, i) {
     const studentsActive = document.querySelectorAll('.student-container');
     const randomNumber = Math.round(Math.random() * (students.length - 1));
 
-    studentsActive[i].innerHTML = `
+    const userAnswer = prompt('Ønsker du å slette? Skriv ja/nei');
+
+    if (userAnswer === null || userAnswer.toLowerCase() !== 'ja') {
+        return;
+    } else {
+        studentsActive[i].innerHTML = `
         <img class='student-img' alt='${!arr[randomNumber].image ? 'Missing image avatar' : arr[randomNumber].name + ' image'}' image' src=${!arr[randomNumber].image ? "./assets/avatar.png" : arr[randomNumber].image} />
         <p>Navn: ${arr[randomNumber].name}</p>
         <p>Hus: ${arr[randomNumber].house ? arr[randomNumber].house : 'Intet hus'}</p>
         <button class='delete-student-btn'>Slett elev</button>
     `;
 
-    getUserInput(i);
+        const deleteStudentBtn = document.querySelectorAll('.delete-student-btn');
+        deleteStudentBtn[i].addEventListener('click', () => {
+            createNewStudent(students, i);
+        });
+    }
 }
 
 function deleteStudent(deleteBtn) {
@@ -37,19 +46,6 @@ function deleteStudent(deleteBtn) {
             createNewStudent(students, i);
         });
     });
-}
-
-function getUserInput(i) {
-    const userAnswer = prompt('Ønsker du å slette? Skriv ja/nei');
-
-    if (userAnswer === null || userAnswer.toLowerCase() !== 'ja') {
-        return;
-    } else {
-        const deleteStudentBtn = document.querySelectorAll('.delete-student-btn');
-        deleteStudentBtn[i].addEventListener('click', () => {
-            createNewStudent(students, i);
-        });
-    }
 }
 
 function generateRandomStudents() {
