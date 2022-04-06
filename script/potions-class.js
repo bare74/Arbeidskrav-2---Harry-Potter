@@ -17,6 +17,25 @@ function clearItems(el) {
     el.innerHTML = '';
 }
 
+function generateNewUniqueStudent(i) {
+    uniqueStudents.splice(i, 1);
+
+    generateRandomStudents();
+
+    let newStudent = uniqueStudents[9];
+
+    while (newStudent === uniqueStudents[i]) {
+        uniqueStudents.splice(i, 1);
+
+        generateRandomStudents();
+
+        newStudent = uniqueStudents[9];
+    }
+
+    uniqueStudents.splice(i, 0, newStudent);
+    uniqueStudents.pop();
+}
+
 function createNewStudent(arr, i) {
     const studentsActive = document.querySelectorAll('.student-container');
     const userAnswer = prompt('Ønsker du å slette? Skriv ja/nei');
@@ -24,14 +43,7 @@ function createNewStudent(arr, i) {
     if (userAnswer === null || userAnswer.toLowerCase() !== 'ja') {
         return;
     } else {
-        uniqueStudents.splice(i, 1);
-
-        generateRandomStudents();
-
-        const newStudent = uniqueStudents[9];
-
-        uniqueStudents.splice(i, 0, newStudent);
-        uniqueStudents.pop();
+        generateNewUniqueStudent(i);
 
         const randomNumber = uniqueStudents[i];
 
