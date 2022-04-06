@@ -25,7 +25,7 @@ function generateNewUniqueStudent(i) {
     let newStudent = uniqueStudents[9];
 
     while (newStudent === uniqueStudents[i]) {
-        uniqueStudents.splice(i, 1);
+        uniqueStudents.pop();
 
         generateRandomStudents();
 
