@@ -1,6 +1,8 @@
 import { API } from "../script/index.js";
 const characterList = document.getElementById("characterList");
 const searchBar = document.getElementById("searchBar");
+const element = document.getElementById("characters-Btn");
+element.addEventListener("click", charactersBtn);
 
 let charactersApi = [];
 let y = [];
@@ -59,7 +61,7 @@ const displayCharacters = (characters) => {
 
 loadCharacters();
 
-function addCharacter() {
+function charactersBtn() {
   var newstaff = document.getElementById("characters-input").value;
   document.getElementById("characters-input").value = "";
 
