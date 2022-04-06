@@ -19,8 +19,6 @@ function clearItems(el) {
 
 function createNewStudent(arr, i) {
     const studentsActive = document.querySelectorAll('.student-container');
-    //const randomNumber = Math.round(Math.random() * (students.length - 1));
-
     const userAnswer = prompt('Ønsker du å slette? Skriv ja/nei');
 
     if (userAnswer === null || userAnswer.toLowerCase() !== 'ja') {
