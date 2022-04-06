@@ -1,8 +1,8 @@
-import { API } from "../script/index.js";
+import { API } from "./index.js";
 const characterList = document.getElementById("characterList");
 const searchBar = document.getElementById("searchBar");
-const element = document.getElementById("characters-Btn");
-element.addEventListener("click", charactersBtn);
+var addCharacter = document.getElementById("characters-btn");
+addCharacter.addEventListener("click", addCharacter);
 
 let charactersApi = [];
 let y = [];
@@ -61,16 +61,17 @@ const displayCharacters = (characters) => {
 
 loadCharacters();
 
-function charactersBtn() {
+function addCharacter() {
   var newstaff = document.getElementById("characters-input").value;
   document.getElementById("characters-input").value = "";
 
   y.push({
     name: newstaff,
     hogwartsStaff: true,
-    image:
-      (src = `https://w7.pngwing.com/pngs/7/618/png-transparent-man-illustration-avatar-icon-fashion-men-avatar-face-fashion-girl-heroes-thumbnail.png`),
+    image: `../assets/avatar.png`,
   });
+
+  console.log(y);
 
   var z = charactersApi.concat(y);
   console.log("test", z);
