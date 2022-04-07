@@ -10,7 +10,7 @@ async function fetchStaff() {
   data.filter((staff) => {
     if (staff.hogwartsStaff === true) {
       staffArray.push(staff);
-      console.log(staffArray);
+    
     }
   });
   showStaffCards(staffArray);
