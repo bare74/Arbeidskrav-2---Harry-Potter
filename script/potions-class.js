@@ -78,6 +78,8 @@ function generateRandomStudents() {
     }
 
     uniqueStudents = [...studentsSet];
+
+    console.log(uniqueStudents);
 }
 
 function generateRandomColors(list) {
@@ -93,6 +95,8 @@ function createStudentsCards() {
     const pupilsContainer = document.querySelector('.pupils-container');
 
     clearItems(pupilsContainer);
+
+    uniqueStudents = [];
 
     generateRandomStudents();
 
