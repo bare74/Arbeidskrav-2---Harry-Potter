@@ -2,18 +2,23 @@ let array = [];
 let staffArray = [];
 
 async function fetchStaff() {
-  let response = await fetch("http://hp-api.herokuapp.com/api/characters"); // or API as defined
-  let data = await response.json();
-  array.push(data);
+  try{
+    let response = await fetch("http://hp-api.herokuapp.com/api/characters"); // or API as defined
+    let data = await response.json();
+    array.push(data);
 
-// filtrate  staff in own array: staffArray
-  data.filter((staff) => {
-    if (staff.hogwartsStaff === true) {
-      staffArray.push(staff);
-    
-    }
-  });
-  showStaffCards(staffArray);
+  // filtrate  staff in own array: staffArray
+    data.filter((staff) => {
+      if (staff.hogwartsStaff === true) {
+        staffArray.push(staff);
+        console.log(staffArray);
+      }
+    });
+    showStaffCards(staffArray);
+  }
+  catch (err) {
+    console.log(err);
+  }
 }
 
 // show staffmembers by name,pic and house,patronus hidden.
