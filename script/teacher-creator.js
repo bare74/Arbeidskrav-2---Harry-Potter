@@ -28,29 +28,44 @@ const loadCharacters = async () => {
     const res = await fetch(API);
     charactersApi = await res.json();
 
+    console.log(charactersApi);
     displayCharacters(charactersApi);
   } catch (err) {
     console.error(err);
   }
 };
 
+// let backGroundImg = "url('../assets/hplogo.jpeg')";
+
 const displayCharacters = (characters) => {
   const htmlString = characters
     .map((characters) => {
+      if (characters.house === "Gryffindor") {
+        // document.getElementById"cards".style.backgroundImage =  backGroundImg;
+      }
       if (characters.hogwartsStaff === true) {
+        //Delete character
+        // for (var i = 0; i < charactersApi.length; i++)
+        //   if (charactersApi[i].name === "Remus Lupin") {
+        //     charactersApi.splice(i, 1);
+        //     break;
+        //   }
+
         if (characters.image === "") {
-          return `<li class="characters">
+          return `<li class="characters" id="cards">
                     <h4>${characters.name}</h4>
                     <p>${characters.house}</p>
-                    <span class="span">${characters.patronus}</span>
-                   <img class "missing-characters src="./assets/avatar.png" alt="Harry Potter characters"></img>
+                    <span id="patronus">${characters.patronus}</span>
+                   <img class="missing-characters" src="./assets/avatar.png" alt="Harry Potter characters"></img>
+                   <button class="btn1" onclick = "deletecharacter(${characters})">DELETE</button>
                 </li>`;
         }
-        return `<li class="characters">
+        return `<li class="characters" id="cards">
                   <h4>${characters.name}</h4>
                   <p>${characters.house}</p>
-                  <span class="span">${characters.patronus}</span>
+                  <span id="patronus">${characters.patronus}</span>
                   <img src="${characters.image}"></img>
+                  <button class="btn1" onclick = "deletcharacter(${characters})"DELETE</button>
                </li>`;
       }
     })
@@ -63,18 +78,17 @@ loadCharacters();
 
 function addCharacterBtn() {
   var newstaff = document.getElementById("characters-input").value;
+  var newstaffhouse = document.getElementById("characters-house-input").value;
   document.getElementById("characters-input").value = "";
 
   y.push({
     name: newstaff,
     hogwartsStaff: true,
+    house: newstaffhouse,
     image: `../assets/avatar.png`,
   });
 
-  console.log(y);
-
   var z = charactersApi.concat(y);
-  console.log("test", z);
 
   displayCharacters(z);
 }
