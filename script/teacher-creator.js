@@ -65,7 +65,7 @@ const displayCharacters = (characters) => {
                   <p>${characters.house}</p>
                   <span id="patronus">${characters.patronus}</span>
                   <img src="${characters.image}"></img>
-                  <button class="btn1" onclick = "deletcharacter(${characters})"DELETE</button>
+                  <button class="btn1" onclick = "deletcharacter(${characters})">DELETE</button>
                </li>`;
       }
     })
