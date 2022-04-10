@@ -28,3 +28,7 @@ body {
 button {
   padding: 5px 10px;
 }
+
+#add-staff-btn,#edit-staff-btn{
+  background-color:rgb(107, 230, 134) ;
+}
