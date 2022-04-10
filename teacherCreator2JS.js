@@ -109,10 +109,6 @@ function createStaffMember() {
   }
 }
 
-let addstaffBtn = document.getElementById("add-staff-btn");
-addstaffBtn.addEventListener("click", createStaffMember);
-
-
 /*function showPatronus(staffArray, i) {
     alert("Hallo");
     patronusVar.innerText = staffArray[i].patronus;
@@ -130,13 +126,25 @@ img.addEventListener("mouseleave", hidePatronus); */
 
 
 function editStaffMember() {
-  // pseudocode:
-  // What teacher do U want to change? Teacher must exist. If not---try again..
+  for (let i = 0; i < staffArray.length; i++) {
+    let editStaffName = document.getElementById("edit-staff-name").value;
+    if (editStaffName !== staffArray[i].name) {
+      // feilmelding
+    }
+    else (alert("lærer finnes"));
+    console.log(editStaffName);
+  }
+}
   // Get teachercard.
   // Input: new name, new house, new patronus.
   // change them and push into right place in staffArray.
-}
 
+
+let editStaffBtn = document.getElementById("edit-staff-btn");
+editStaffBtn.addEventListener("click", editStaffMember);
+
+let addstaffBtn = document.getElementById("add-staff-btn");
+addstaffBtn.addEventListener("click", createStaffMember);
 
 fetchStaff();
 showStaffCards;
