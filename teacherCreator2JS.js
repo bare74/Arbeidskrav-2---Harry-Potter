@@ -129,7 +129,14 @@ img.addEventListener("mouseenter", showPatronus);
 img.addEventListener("mouseleave", hidePatronus); */
 
 
-function editStaffMember() {}
+function editStaffMember() {
+  // pseudocode:
+  // What teacher do U want to change? Teacher must exist. If not---try again..
+  // Get teachercard.
+  // Input: new name, new house, new patronus.
+  // change them and push into right place in staffArray.
+}
+
 
 fetchStaff();
 showStaffCards;
