@@ -79,11 +79,10 @@ loadCharacters();
 function addCharacterBtn() {
   var newstaff = document.getElementById("characters-input").value;
   var newstaffhouse = document.getElementById("characters-house-input").value;
-  var patronus = document.getElementById("patronus").value;
+  var patronus = document.getElementById("patronus-input").value;
   document.getElementById("characters-input").value = "";
-   document.getElementById("characters-house-input").value = "";
-    document.getElementById("patronus-input").value = "";
-  
+  document.getElementById("characters-house-input").value = "";
+  document.getElementById("patronus-input").value = "";
 
   y.push({
     name: newstaff,
