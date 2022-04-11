@@ -1,69 +1,44 @@
-*{
-    margin: 0;
+* {
     padding: 0;
-    box-sizing: border-box;
+    margin: 0;
+  
 }
 body{
-    background-color: black;
+  font-family: fantasy;
+  background: rgb(151, 139, 139);
 }
-h1{
-   font-size: 2rem;
-   color: rgb(68, 68, 68);
-   margin: 10px auto;
-   text-align: center;
+.main-container{
+ text-align: center;
+ color: rgb(85, 85, 16)
 }
+.inner-container{
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+}
+img{
+  width: 300px;
+}
+img:hover{
+  background-color: rgb(160, 155, 79);
+}
+/* endres etterhvert. hoover effekt*/
+.gryffindor-container{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: auto;
+  text-align: center;
+  margin: 15px;
+  padding: 55px;
+  transition: 2.3s;
+}
+/* Fikse styling */
+
+/*styling for js fil*/
 
 
-.main{
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}
-.ravenclaw{
-    width: 100px;
-    
-}
-.gryffindor{
-    width: 100px;
-   
-}
-.hufflepuff{
-    width: 100px;
-    
-    
-}
-.slytherin{
-    width: 100px;
-    
-}
-
-
-.box{
-    width: 200px;
-    height: 400px;
-    background: rgb(12, 12, 12);
-    box-shadow: 2px 2px 2px rgb(27, 27, 27);
-    margin: 20px 0;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0;
-    border-radius: 20px;
-    margin-right: 20px;
-}
-.box img{
-    width: 100px;
-    margin: 8px 0;
-}
-.info{
-    padding: 10px;
-    font-size: 1.2rem;
-    margin: 2px;
-}
-.info p{
-    margin: 5px 0;
-}
