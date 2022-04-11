@@ -84,15 +84,23 @@ function addCharacterBtn() {
   document.getElementById("characters-house-input").value = "";
   document.getElementById("patronus-input").value = "";
 
-  y.push({
-    name: newstaff,
-    hogwartsStaff: true,
-    house: newstaffhouse,
-    patronus: patronus,
-    image: `../assets/avatar.png`,
-  });
+  if (newstaff === "") {
+    alert("Fyll inn Navn på din karakter");
+  } else if (newstaffhouse === "") {
+    alert("Fyll inn Navn på huset");
+  } else if (patronus === "") {
+    alert("Fyll inn Navn på din patronus");
+  } else {
+    y.push({
+      name: newstaff,
+      hogwartsStaff: true,
+      house: newstaffhouse,
+      patronus: patronus,
+      image: `../assets/avatar.png`,
+    });
 
-  var z = charactersApi.concat(y);
+    var z = charactersApi.concat(y);
 
-  displayCharacters(z);
+    displayCharacters(z);
+  }
 }
