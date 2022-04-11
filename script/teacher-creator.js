@@ -91,6 +91,7 @@ function addCharacterBtn() {
   } else if (patronus === "") {
     alert("Fyll inn Navn på din patronus");
   } else {
+confirm("Ønsker du og lagre")
     y.push({
       name: newstaff,
       hogwartsStaff: true,
