@@ -3,7 +3,6 @@
   padding: 0;
 }
 
-
 .characters-container {
   padding: 100px;
   margin: 0 auto;
@@ -47,11 +46,8 @@
 }
 
 .characters p {
-
   grid-area: house;
-
-} 
-
+}
 
 .characters > img {
   max-height: 200px;
@@ -65,10 +61,10 @@
   grid-area: button;
 }
 
-/* .characters > span {
+.characters > span {
   grid-area: span;
   display: none;
 }
 .characters:hover > span {
   display: block;
-} */
+}

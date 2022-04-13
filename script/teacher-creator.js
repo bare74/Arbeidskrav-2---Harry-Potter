@@ -1,6 +1,16 @@
 import { API } from "./index.js";
 const characterList = document.getElementById("characterList");
 const searchBar = document.getElementById("searchBar");
+// var src = document.getElementById("cards");
+// img.src = `../assets/hplogo.jpeg`,
+// src.appendChild(img); 
+
+// const backGroundImg = {
+//   Gryffindor: `../assets/avatar.png`,
+//   Slytherin: `../assets/avatar.png`,
+//   Hufflepuff: `../assets/avatar.png`,
+//   Ravenclaw: `../assets/avatar.png`,
+// };
 var addCharacter = document.getElementById("characters-btn");
 addCharacter.addEventListener("click", addCharacterBtn);
 
@@ -27,22 +37,27 @@ const loadCharacters = async () => {
   try {
     const res = await fetch(API);
     charactersApi = await res.json();
-
-    console.log(charactersApi);
     displayCharacters(charactersApi);
   } catch (err) {
     console.error(err);
   }
 };
 
-// let backGroundImg = "url('../assets/hplogo.jpeg')";
+// const setBackground = (image) => {
+//   document.body.style.background = "url(`"+backGroundImg.[image]+"`)";
+// };
 
 const displayCharacters = (characters) => {
   const htmlString = characters
     .map((characters) => {
-      if (characters.house === "Gryffindor") {
-        // document.getElementById"cards".style.backgroundImage =  backGroundImg;
-      }
+      // if (characters.house === "Gryffindor") {
+      //   setBackground(`Gryffindor`)
+      // } else {
+      //   setBackground(`Slytherin`)
+      // }
+      // if (characters.house === "Gryffindor") {
+      //   document.body.style.backGroundImgage = "url('../assets/hplogo.jpeg')";
+      // }
       if (characters.hogwartsStaff === true) {
         //Delete character
         // for (var i = 0; i < charactersApi.length; i++)
@@ -91,17 +106,22 @@ function addCharacterBtn() {
   } else if (patronus === "") {
     alert("Fyll inn Navn på din patronus");
   } else {
-confirm("Ønsker du og lagre")
-    y.push({
-      name: newstaff,
-      hogwartsStaff: true,
-      house: newstaffhouse,
-      patronus: patronus,
-      image: `../assets/avatar.png`,
-    });
-
-    var z = charactersApi.concat(y);
-
-    displayCharacters(z);
+    let text = "Trykk på ok for og lagre ! \n eller avbryt";
+    if (confirm(text) == true) {
+      y.unshift({
+        hogwartsStaff: true,
+        name: newstaff,
+        house: newstaffhouse,
+        patronus: patronus,
+        image: `../assets/avatar.png`,
+      });
+    } else {
+      text = "Karakteren ble ikke lagret";
+    }
   }
+
+  var z = charactersApi.concat(y);
+  console.log(z);
+
+  displayCharacters(z);
 }
