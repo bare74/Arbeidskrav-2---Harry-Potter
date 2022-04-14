@@ -1,6 +1,8 @@
 import { API } from "./index.js";
 const characterList = document.getElementById("characterList");
 const searchBar = document.getElementById("searchBar");
+const image = document.createElement("img");
+image.src = "../assets/hplogo.jpeg";
 // var src = document.getElementById("cards");
 // img.src = `../assets/hplogo.jpeg`,
 // src.appendChild(img); 
@@ -50,11 +52,9 @@ const loadCharacters = async () => {
 const displayCharacters = (characters) => {
   const htmlString = characters
     .map((characters) => {
-      // if (characters.house === "Gryffindor") {
-      //   setBackground(`Gryffindor`)
-      // } else {
-      //   setBackground(`Slytherin`)
-      // }
+      if (characters.house === "Gryffindor") {
+
+      } 
       // if (characters.house === "Gryffindor") {
       //   document.body.style.backGroundImgage = "url('../assets/hplogo.jpeg')";
       // }
@@ -119,9 +119,10 @@ function addCharacterBtn() {
       text = "Karakteren ble ikke lagret";
     }
   }
-
+ 
   var z = charactersApi.concat(y);
-  console.log(z);
+ 
 
   displayCharacters(z);
+
 }
