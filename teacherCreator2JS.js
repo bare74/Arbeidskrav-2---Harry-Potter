@@ -125,28 +125,26 @@ img.addEventListener("mouseenter", showPatronus);
 img.addEventListener("mouseleave", hidePatronus); */
 
 
-function editStaffMember() {
+function checkIfStaffMemberExists() {
   for (let i = 0; i < staffArray.length; i++) {
     let editStaffName = document.getElementById("edit-staff-name").value;
     if (editStaffName !== staffArray[i].name) {
       // feilmelding
     }
-    else (alert(`Lærer finnes! Indeks: ${i}`));
+    else (alert(`Lærer finnes! Indeks: ${i}\n Bare gå videre `));
     console.log(editStaffName); 
   }
 }
 
-  
-  // Get teachercard.
-  // Input: new name, new house, new patronus.
-  // change them and push into right place in staffArray.
 
 
 let editStaffBtn = document.getElementById("edit-staff-btn");
-editStaffBtn.addEventListener("click", editStaffMember);
+editStaffBtn.addEventListener("click", checkIfStaffMemberExists);
 
 let addstaffBtn = document.getElementById("add-staff-btn");
 addstaffBtn.addEventListener("click", createStaffMember);
+
+
 
 fetchStaff();
 showStaffCards;
