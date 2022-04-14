@@ -131,10 +131,12 @@ function editStaffMember() {
     if (editStaffName !== staffArray[i].name) {
       // feilmelding
     }
-    else (alert("lærer finnes"));
-    console.log(editStaffName);
+    else (alert(`Lærer finnes! Indeks: ${i}`));
+    console.log(editStaffName); 
   }
 }
+
+  
   // Get teachercard.
   // Input: new name, new house, new patronus.
   // change them and push into right place in staffArray.
