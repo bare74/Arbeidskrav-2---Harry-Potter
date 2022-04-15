@@ -124,27 +124,8 @@ function hidePatronus(staffArray, i) {
 img.addEventListener("mouseenter", showPatronus);
 img.addEventListener("mouseleave", hidePatronus); */
 
-
-function checkIfStaffMemberExists() {
-  for (let i = 0; i < staffArray.length; i++) {
-    let editStaffName = document.getElementById("edit-staff-name").value;
-    if (editStaffName !== staffArray[i].name) {
-      // feilmelding
-    }
-    else (alert(`Lærer finnes! Indeks: ${i}\n Bare gå videre `));
-    console.log(editStaffName); 
-  }
-}
-
-
-
-let editStaffBtn = document.getElementById("edit-staff-btn");
-editStaffBtn.addEventListener("click", checkIfStaffMemberExists);
-
 let addstaffBtn = document.getElementById("add-staff-btn");
 addstaffBtn.addEventListener("click", createStaffMember);
-
-
 
 fetchStaff();
 showStaffCards;
