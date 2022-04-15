@@ -62,17 +62,30 @@ function showStaffCards(staffArray) {
       patronusVar.innerText = "Ingen patronus";
     }
 
-// delete-button:
+    // delete-button:
     let deleteStaff = document.createElement("button");
-    deleteStaff.innerText = "Slett";
+    deleteStaff.innerText = "Slett lærer";
     deleteStaff.classList.add("delete-btn");
     deleteStaff.addEventListener("click", function () {
       deleteStaffMember(staffArray, i);
     });
-    div.append(staffName, img, staffHouse, patronusVar, deleteStaff);
+
+
+    // edit-button:
+    let editStaff = document.createElement("button");
+    editStaff.innerText = "Endre lærer";
+    editStaff.classList.add("edit-btn");
+    editStaff.addEventListener("click", function () {
+      editStaffMember(staffArray, i);
+    });
+    div.append(staffName, img, staffHouse, patronusVar, deleteStaff, editStaff);
     staffContainer.append(div);
+
   }
+
 }
+
+
 
 // delete staff-member:
 
@@ -80,6 +93,30 @@ function deleteStaffMember(staffArray, i) {
   let answer = prompt("Ønsker du å slette?(ja/nei)");
   if (answer === "ja") {
     staffArray.splice(i, 1);
+    showStaffCards(staffArray);
+  }
+}
+
+// edit staff-member:
+
+function editStaffMember(staffArray, i) {
+  let editedName = prompt("Nytt navn ?");
+  let editedHouse = prompt("Nytt hus ?");
+  let editedPatronus = prompt("Ny patronus ?");
+  let newImage = "./images/avatar.jpg";
+
+  if (editedName == "" || editedHouse == "" || editedPatronus == "") {
+    alert("Husk alle felter må fylles ut!");
+  } else {
+    staffArray[i] = ({
+      name: editedName,
+      image: newImage,
+      house: editedHouse,
+      patronus: editedPatronus,
+    });
+  }
+  let answer = prompt("Ønsker du virkelig å endre ansatt? (ja/nei)");
+  if (answer === "ja") {
     showStaffCards(staffArray);
   }
 }
