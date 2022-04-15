@@ -42,6 +42,9 @@ function showStaffCards(staffArray) {
 
     let staffHouse = document.createElement("p");
     staffHouse.innerText = staffArray[i].house;
+    if (staffArray[i].house === "") {
+      staffHouse.innerText = "Intet hus funnet";
+    }
     // styling houses:
     if (staffArray[i].house === "Slytherin") {
       div.style.backgroundColor = "rgb(107, 230, 134)";
