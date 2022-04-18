@@ -123,9 +123,7 @@ function addCharacterBtn() {
         patronus: patronus,
         image: `../assets/avatar.png`,
       });
-    } else {
-      text = "Karakteren ble ikke lagret";
-    }
+    } 
   }
 
   displayCharacters(charactersApi);
