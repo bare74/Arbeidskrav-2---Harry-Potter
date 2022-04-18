@@ -39,11 +39,14 @@ const loadCharacters = async () => {
   try {
     const res = await fetch(API);
     charactersApi = await res.json();
+
+    
     displayCharacters(charactersApi);
   } catch (err) {
     console.error(err);
   }
 };
+
 
 // const setBackground = (image) => {
 //   document.body.style.background = "url(`"+backGroundImg.[image]+"`)";
@@ -53,7 +56,6 @@ const displayCharacters = (characters) => {
   const htmlString = characters
     .map((characters) => {
       if (characters.house === "Gryffindor") {
-
       } 
       // if (characters.house === "Gryffindor") {
       //   document.body.style.backGroundImgage = "url('../assets/hplogo.jpeg')";
@@ -82,11 +84,17 @@ const displayCharacters = (characters) => {
                   <img src="${characters.image}"></img>
                   <button class="btn1" onclick = "deletcharacter(${characters})">DELETE</button>
                </li>`;
+               
       }
-    })
+    }
+    
+    )
+    
 
     .join("");
+    
   characterList.innerHTML = htmlString;
+  
 };
 
 loadCharacters();
