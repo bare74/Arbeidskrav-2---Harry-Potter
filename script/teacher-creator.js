@@ -17,7 +17,7 @@ var addCharacter = document.getElementById("characters-btn");
 addCharacter.addEventListener("click", addCharacterBtn);
 
 let charactersApi = [];
-let y = [];
+// let y = [];
 
 searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
@@ -116,7 +116,7 @@ function addCharacterBtn() {
   } else {
     let text = "Trykk på ok for og lagre ! \n eller avbryt";
     if (confirm(text) == true) {
-      y.unshift({
+      charactersApi.unshift({
         hogwartsStaff: true,
         name: newstaff,
         house: newstaffhouse,
@@ -127,10 +127,6 @@ function addCharacterBtn() {
       text = "Karakteren ble ikke lagret";
     }
   }
- 
-  var z = charactersApi.concat(y);
- 
 
-  displayCharacters(z);
-
+  displayCharacters(charactersApi);
 }
