@@ -3,7 +3,6 @@
   padding: 0;
 }
 
-
 .characters-container {
   padding: 100px;
   margin: 0 auto;
@@ -27,11 +26,12 @@
   transition: all 0.2s linear;
   padding: 40px 50px;
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 4fr 1fr;
   grid-template-areas:
     "name image"
     "house image"
-    "span image";
+    "span image"
+    "button image";
   text-align: left;
 }
 
@@ -45,12 +45,9 @@
   margin-bottom: 0px;
 }
 
-.characters > p {
+.characters p {
   grid-area: house;
-  margin: 0;
-  margin-top: 18px;
 }
-
 
 .characters > img {
   max-height: 200px;
@@ -58,16 +55,16 @@
   grid-area: image;
 }
 
-
-.span {
+.characters > button {
   max-height: 200px;
   max-width: 100px;
-  grid-area: span;
+  grid-area: button;
 }
 
-.span {
+.characters > span {
+  grid-area: span;
   display: none;
 }
-.characters:hover .span {
+.characters:hover > span {
   display: block;
 }

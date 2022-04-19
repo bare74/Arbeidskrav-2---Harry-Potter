@@ -13,11 +13,26 @@
     <link rel="stylesheet" href="./css/teacher-creators.css" />
   </head>
   <body>
-    <div class="characters-container">
-      <h1>Add new hogwarts Staff character</h1>
-      <input type="text" id="characters-input" placeholder="Navn..." />
-      <button id="characters-btn">legg til</button>
-      <div id="searchWrapper">
+     <header>
+      <div class="main_header">
+        <h1>Harry Potter</h1>
+        <div class="navigation">
+          <ul>
+            <li>
+              <a href="./index.html" class="link_header"><h3>Forside</h3></a>
+            </li>
+            <li>
+              <a href="./" class="link_header"
+                ><h3>Teacher Creator</h3></a
+              >
+            </li>
+            <li>
+              <a href="./potions-class.html" class="link_header">
+                <h3>Position Class</h3></a
+              >
+            </li>
+            <li>
+              <div id="searchWrapper">
         <input
           type="text"
           name="searchBar"
@@ -25,6 +40,23 @@
           placeholder="Søk etter karakter"
         />
       </div>
+      </li> 
+</header>
+    <div class="addCharacter">   
+      <h1>Add new hogwarts Staff character</h1>
+      <ul>
+            <li>
+      <input type="text" id="characters-input" placeholder="Navn..." />
+            </li>
+            <li>
+      <input type="text" id="characters-house-input" placeholder="Navn på huset..." />
+    </li>
+    <li>
+      <input type="text" id="patronus-input" placeholder="Navn på patronus..." />
+      </li>
+      <button id="characters-btn">legg til</button>
+      </div>
+      <div class="characters-container">
       <ul id="characterList"></ul>
     </div>
     <script src="script/teacher-creator.js" type="module"></script>
