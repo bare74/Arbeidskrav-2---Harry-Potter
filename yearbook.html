@@ -1,45 +1,67 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/CSS/yearbook.css">
-    <title>Document</title>
+    <title>Yearbook</title>
 </head>
 <body>
+            <header><h1>Hogwarts Houses</h1></header>
+
+
     <div class="main-container">
 
-        <h1>Hogwarts Houses</h1>
+<div class="search-wrapper">
+    <input
+    type="text"
+    placeholder="Søk "
+    class="searchbar"/>
+</div>
+
+<h1> Her kan du legge til en Student</h1>
+
+<div class="add-character">
+    <input
+     type="text"
+     placeholder="Skriv ditt Navn"
+     class="input-Name">
+    
+     <input
+     type="text"
+     placeholder="Skriv Huset du vil bli med i"
+     class="input-House>">
+    
+     <input
+     type="text"
+     placeholder="Alder"
+     class="input-Age">     
+</div>
+
     <div class="inner-container">
 
         <div class="gryffindor-container">
-            <img src="/Test area JAvascript/assets/Gryffindor-Logo.png" 
-            class="gryffindor-img" alt="Gryffindor-Badge"
-            onclick="showGryffindorStudents()">
+            <img id="gryffindorImg" onclick="gryffHouse()" src="/assets/Gryffindor-Logo.png" alt="Gryffindor-Badge">
         </div>
+
         <div class="hufflepuff-container">
-            <img src="/Test area JAvascript/assets/Huffelpuff-Logo.png" 
-            class="hufflepuff-img" alt="Hufflepuff-Badge"
-            onclick="showHufflePuffStudents()">
+            <img id="hufflepuffImg" onclick="huffleHouse()" src="/assets/Huffelpuff-Logo.png" onclick="hufflepuff()" alt="Hufflepuff-Badge">
         </div>
+
         <div class="ravenclaw-container">
-            <img src="/Test area JAvascript/assets/Ravenclaw-Logo.png" 
-            class="ravenclaw-img" alt="Ravenclaw-Badge"
-            onclick="showRavenclawStudents()">
+            <img id="ravenclawImg" onclick="ravenHouse()" src="/assets/Ravenclaw-Logo.png" onclick="ravenclaw()" alt="Ravenclaw-Badge">
+       
         </div>
         <div class="slytherin-container">
-            <img src="/Test area JAvascript/assets/Slytherin-Logo.png" 
-            class="slytherin-img" alt="Slytherin-Badge"
-            onclick="showSlytherinStudents()">
+            <img id="slytherinImg" onclick="slythHouse()" src= "/assets/Slytherin-Logo.png" onclick="slytherin()" alt="Slytherin-Badge">
+
         </div> 
     </div>
+    <div class="cards"></div>
 </div>
 
-
-
-
     <script src="/script/year.js"></script>
-    
+
 </body>
 </html>

@@ -1,16 +1,42 @@
 * {
-    padding: 0;
-    margin: 0;
-  
+  padding: 0;
+  margin: 0;
+
 }
 body{
-  font-family: fantasy;
-  background: rgb(151, 139, 139);
+font-family: sans-serif;
+background-image: url();
+background-color: coral;
+}
+header{
+text-align: center;
 }
 .main-container{
- text-align: center;
- color: rgb(85, 85, 16)
+text-align: center;
+color: rgb(85, 85, 16);
 }
+.searchWrapper {
+border: 2px solid black;
+
+}
+.searchbar {
+width: 60%;
+height: 22px;
+border-radius: 3px;
+border: 1px solid #eaeaea;
+padding: 5px 10px;
+font-size: 12px;
+}
+
+.add-character{
+display: flex;
+justify-content: center;
+margin: auto;
+width: 200px;
+}
+
+
+
 .inner-container{
 display: flex;
 flex-wrap: wrap;
@@ -18,27 +44,99 @@ justify-content: center;
 align-items: center;
 }
 img{
-  width: 300px;
+width: 300px;
 }
 img:hover{
-  background-color: rgb(160, 155, 79);
+background-color: rgb(160, 155, 79);
 }
-/* endres etterhvert. hoover effekt*/
+
+.cards{
+display: block;
+display: flex;
+flex-wrap: wrap;
+background-color: rebeccapurple;
+}
+.gryffCard{
+background-color: rgb(136, 133, 86);
+}
+.huffCard{
+background-color: blueviolet;
+}
+.ravenCard{
+
+}
+.slythCard{
+
+}
+
+.card {
+background: lightcoral;
+width:150px;
+height: 300px;
+padding: 15px;
+margin: 15px;
+
+}
+
+.card img{
+justify-content: center;
+width: 100px;
+
+}
+
+
+
+
 .gryffindor-container{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 200px;
-  height: auto;
-  text-align: center;
-  margin: 15px;
-  padding: 55px;
-  transition: 2.3s;
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 200px;
+height: auto;
+text-align: center;
+margin: 15px;
+padding: 55px;
+transition: 2.0s;
 }
-/* Fikse styling */
-
-/*styling for js fil*/
-
+.hufflepuff-container{
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 200px;
+height: auto;
+text-align: center;
+margin: 15px;
+padding: 55px;
+transition: 2.0s;
+}
+.ravenclaw-container{
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 200px;
+height: auto;
+text-align: center;
+margin: 15px;
+padding: 55px;
+transition: 2.3s;
+}
+.slytherin-container{
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 200px;
+height: auto;
+text-align: center;
+margin: 15px;
+padding: 55px;
+transition: 2.3s;
+}
 

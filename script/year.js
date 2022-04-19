@@ -1,125 +1,152 @@
-// first outcast
 
 
-//---------------------Searcbar---------------------//
-
-//--------------------------------------------------//
-
-fetch(`http://hp-api.herokuapp.com/api/characters/house/Ravenclaw`).then((data)=>{
-            let info = data.json();
-            return info;
-        }).then((data)=>{
-            characterRavenclaw(data);
-        }).then((data)=>{
-            characterGryffindor(data);
-        })
 
 
-        function characterRavenclaw(data){
 
-            var ravenclaw = document.querySelector(".ravenclaw");
-            for(var i = 0;i<data.length;i++){
-
-                let box = document.createElement("div");
-                box.setAttribute("class","box");
-                let content =document.getElementById("content");
-
-                ravenclaw.appendChild(box);
-                box.innerHTML = `<h2>${data[i].name}</h2>
-                                <img src="${data[i].image}"></img>
-                                <div class="info">
-                                    <p>Gender:- ${data[i].gender}</p>
-                                    <p>House:- ${data[i].house}</p>
-                                    <p>DateOfBirth:- ${data[i].dateOfBirth}</p>
-                                    <p>Alive : ${data[i].alive === true}</p>
-                                </div>`;
-                 
-            }
-        }
-//------------------------------------------------------------------------//
-        fetch(`http://hp-api.herokuapp.com/api/characters/house/Gryffindor`).then((data)=>{
-            let info = data.json();
-            return info;
-        }).then((data)=>{
-            characterGryffindor(data);
-        })
+//--------------------Search Bar---------------//
 
 
-        function characterGryffindor(data){
-            
-            var gryffindor = document.querySelector(".gryffindor");
-            for(var i = 0;i<data.length;i++){
-                let box = document.createElement("div");
-                box.setAttribute("class","box");
-                let content =document.getElementById("content");
-
-                gryffindor.appendChild(box);
-                box.innerHTML = `<h2>${data[i].name}</h2>
-                                <img src="${data[i].image}"></img>
-                                <div class="info">
-                                    <p>Gender:- ${data[i].gender}</p>
-                                    <p>House:- ${data[i].house}</p>
-                                    <p>DateOfBirth:- ${data[i].dateOfBirth}</p>
-                                    <p>Alive : ${data[i].alive === true}</p>
-                                </div>`;
-                 
-            }
-        }
-//---------------------------------------------------//
-fetch(`http://hp-api.herokuapp.com/api/characters/house/HUfflepuff`).then((data)=>{
-    let info = data.json();
-    return info;
-}).then((data)=>{
-    characterHufflepuff(data);
-})
 
 
-function characterHufflepuff(data){
-    
-    var hufflepuff = document.querySelector(".hufflepuff");
-    for(var i = 0;i<data.length;i++){
-        let box = document.createElement("div");
-        box.setAttribute("class","box");
-        let content =document.getElementById("content");
 
-        hufflepuff.appendChild(box);
-        box.innerHTML = `<h2>${data[i].name}</h2>
-                        <img src="${data[i].image}"></img>
-                        <div class="info">
-                            <p>Gender:- ${data[i].gender}</p>
-                            <p>House:- ${data[i].house}</p>
-                            <p>DateOfBirth:- ${data[i].dateOfBirth}</p>
-                            <p>Alive : ${data[i].alive === true}</p>
-                        </div>`;
-         
+
+
+
+
+
+
+
+//----------------------------------------------//
+
+
+async function getStudents() {
+    let url = 'http://hp-api.herokuapp.com/api/characters';
+    try {
+        let res = await fetch(url);
+        return await res.json();
+    } catch (error) {
+        console.log(error);
     }
-}
-//-------------------------------------------------------//
-fetch(`http://hp-api.herokuapp.com/api/characters/house/Slytherin`).then((data)=>{
-    let info = data.json();
-    return info;
-}).then((data)=>{
-    characterSlytherin(data);
-})
+  }
 
 
-function characterSlytherin(data){
-    
-    var slytherin = document.querySelector(".slytherin");
-    for(var i = 0;i<data.length;i++){
-        let box = document.createElement("div");
-        box.setAttribute("class","box");
-        let content =document.getElementById("content");
+  
+  async function gryffHouse() {
+    let users = await getStudents();
+    let html = '';
+    users.forEach(user => {
+      if((user.house === "Gryffindor") && (user.hogwartsStudent === true)){
+        let htmlSegment = 
+       `<div class="card">
+       <div class ="gryffCard">
+        <img class="user-img" src="${user.image}"</img>
+          <div class="container">
+          <ul>
+          <li><h2>Name:${user.name}</h2></li>
+          <li><h2>House:${user.house}</h2></li>
+          <li><h2>Age:${"2022"- user.yearOfBirth}</h2></li>
+          <li><h2>${user.alive === true}</h2></li>
+            </ul>
+          </div>
+          </div>
+        </div>
+        </div>`;
+  
+        html += htmlSegment;
+      
+      } 
+    });
+  gryffHouse();
+    let content = document.querySelector('.cards');
+    content.innerHTML = html;
+  }
+  async function huffleHouse() {
+    let users = await getStudents();
+    let html = '';
+    users.forEach(user => {
+      if((user.house === "Hufflepuff") && (user.hogwartsStudent === true)){
+        let htmlSegment = 
+       `<div class="card">
+       <div class="huffCard"> 
+        <img class="user-img" src="${user.image}"</img>
+          <div class="container">
+          <ul>
+          <li><h2>Name:${user.name}</h2></li>
+          <li><h2>House:${user.house}</h2></li>
+          <li><h2>Age:${user.yearOfBirth - "2020"}</h2></li>
+          <li><h2>${user.alive}</h2></li>
+            </ul>
+          </div>
+          </div>
+        </div>
+        </div>`;
+  
+        html += htmlSegment;
+      
+      } 
+    });
+    huffleHouse();
+    let content = document.querySelector('.cards');
+    content.innerHTML = html;
+  }
+  async function ravenHouse() {
+    let users = await getStudents();
+    let html = '';
+    users.forEach(user => {
+      if((user.house === "Ravenclaw") && (user.hogwartsStudent === true)){
+        let htmlSegment = 
+       `<div class="card">
+       <div class="ravenCard">
+        <img class="user-img" src="${user.image}"</img>
+          <div class="container">
+          <ul>
+          <li><h2>Name:${user.name}</h2></li>
+          <li><h2>House:${user.house}</h2></li>
+          <li><h2>Age:${user.yearOfBirth - "2020"}</h2></li>
+          <li><h2>${user.alive}</h2></li>
+            </ul>
+          </div>
+          </div>
+        </div>
+        </div>`;
+  
+        html += htmlSegment;
+      
+      } 
+    });
+    ravenHouse();
+    let content = document.querySelector('.cards');
+    content.innerHTML = html;
+  }
+  async function slythHouse() {
+    let users = await getStudents();
+    let html = '';
+    users.forEach(user => {
+      if((user.house === "Gryffindor") && (user.hogwartsStudent === true)){
+        let htmlSegment = 
+       `<div class="card">
+       <div class="slythCard"> 
+        <img class="user-img" src="${user.image}"</img>
+          <div class="container">
+          <ul>
+          <li><h2>Name:${user.name}</h2></li>
+          <li><h2>House:${user.house}</h2></li>
+          <li><h2>Age:${user.yearOfBirth - "2020"}</h2></li>
+          <li><h2>${user.alive}</h2></li>
+            </ul>
+          </div>
+          </div>
+        </div>
+        </div>`;
+  
+        html += htmlSegment;
+      
+      } 
+    });
+    slythHouse();
+    let content = document.querySelector('.cards');
+    content.innerHTML = html;
+  }
+ 
 
-        slytherin.appendChild(box);
-        box.innerHTML = `<h2>${data[i].name}</h2>
-                        <img src="${data[i].image}"></img>
-                        <div class="info">
-                            <p>Gender:- ${data[i].gender}</p>
-                            <p>House:- ${data[i].house}</p>
-                            <p>DateOfBirth:- ${data[i].dateOfBirth}</p>
-                            <p>Alive : ${data[i].alive === true}</p>
-                        </div>`;
-         
-    }
-}
+
