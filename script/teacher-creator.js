@@ -3,21 +3,11 @@ const characterList = document.getElementById("characterList");
 const searchBar = document.getElementById("searchBar");
 const image = document.createElement("img");
 image.src = "../assets/hplogo.jpeg";
-// var src = document.getElementById("cards");
-// img.src = `../assets/hplogo.jpeg`,
-// src.appendChild(img); 
 
-// const backGroundImg = {
-//   Gryffindor: `../assets/avatar.png`,
-//   Slytherin: `../assets/avatar.png`,
-//   Hufflepuff: `../assets/avatar.png`,
-//   Ravenclaw: `../assets/avatar.png`,
-// };
 var addCharacter = document.getElementById("characters-btn");
 addCharacter.addEventListener("click", addCharacterBtn);
 
 let charactersApi = [];
-// let y = [];
 
 searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
@@ -40,34 +30,16 @@ const loadCharacters = async () => {
     const res = await fetch(API);
     charactersApi = await res.json();
 
-    
     displayCharacters(charactersApi);
   } catch (err) {
     console.error(err);
   }
 };
 
-
-// const setBackground = (image) => {
-//   document.body.style.background = "url(`"+backGroundImg.[image]+"`)";
-// };
-
 const displayCharacters = (characters) => {
   const htmlString = characters
     .map((characters) => {
-      if (characters.house === "Gryffindor") {
-      } 
-      // if (characters.house === "Gryffindor") {
-      //   document.body.style.backGroundImgage = "url('../assets/hplogo.jpeg')";
-      // }
       if (characters.hogwartsStaff === true) {
-        //Delete character
-        // for (var i = 0; i < charactersApi.length; i++)
-        //   if (charactersApi[i].name === "Remus Lupin") {
-        //     charactersApi.splice(i, 1);
-        //     break;
-        //   }
-
         if (characters.image === "") {
           return `<li class="characters" id="cards">
                     <h4>${characters.name}</h4>
@@ -84,17 +56,12 @@ const displayCharacters = (characters) => {
                   <img src="${characters.image}"></img>
                 <button class="btn1" onclick="deletecharacter(${characters})">DELETE</button>
                </li>`;
-               
       }
-    }
-    
-    )
-    
+    })
 
     .join("");
-    
+
   characterList.innerHTML = htmlString;
-  
 };
 
 loadCharacters();
@@ -114,7 +81,7 @@ function addCharacterBtn() {
   } else if (patronus === "") {
     alert("Fyll inn Navn på din patronus");
   } else {
-    let text = prompt ("Ønsker du og lagre din karakter? (ja/nei)");
+    let text = prompt("Ønsker du og lagre din karakter? (ja/nei)");
     if (text == "ja") {
       charactersApi.unshift({
         hogwartsStaff: true,
@@ -123,14 +90,11 @@ function addCharacterBtn() {
         patronus: patronus,
         image: `../assets/avatar.png`,
       });
-    } 
+    }
   }
 
   displayCharacters(charactersApi);
-};
-
-
-
+}
 
 function deletecharacter(i) {
   if (confirm("Ønsker du og slette karakteren?")) {
@@ -140,4 +104,3 @@ function deletecharacter(i) {
     displayCharacters(charactersApi);
   }
 }
-
