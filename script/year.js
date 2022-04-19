@@ -1,22 +1,29 @@
 
-
-
-
-
 //--------------------Search Bar---------------//
 
 
-
-
-
-
-
-
-
-
-
-
 //----------------------------------------------//
+let gryffHouse = document.getElementById("gryffImg");
+let huffHouse = document.getElementById("huffleImg");
+let ravenHouse = document.getElementById("ravenImg");
+let slythHouse = document.getElementById("slythImg");
+
+gryffHouse.addEventListener("click", () =>{
+    fetchData("Gryffindor", gryffHouse);
+      
+  });
+  huffHouse.addEventListener("click", () =>{
+    fetchData("Hufflepuff", huffHouse)
+  });
+  ravenHouse.addEventListener("click", ()=>{
+    fetchData("Ravenclaw", ravenHouse)
+  });
+  slythHouse.addEventListener("click", ()=>{
+    fetchData("Slytherin", slythHouse)
+  });
+
+
+
 
 
 async function getStudents() {
