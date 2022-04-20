@@ -46,7 +46,7 @@ const displayCharacters = (characters) => {
                     <p>${characters.house}</p>
                     <span id="patronus">${characters.patronus}</span>
                    <img class="missing-characters" src="./assets/avatar.png" alt="Harry Potter characters"></img>
-                   <button class="btn1" onclick="deletecharacter()">DELETE</button>
+                   <button class="btn1">DELETE</button>
                 </li>`;
         }
         return `<li class="characters" id="cards">
@@ -54,7 +54,7 @@ const displayCharacters = (characters) => {
                   <p>${characters.house}</p>
                   <span id="patronus">${characters.patronus}</span>
                   <img src="${characters.image}"></img>
-                <button class="btn1" onclick="deletecharacter(${characters})">DELETE</button>
+                <button class="btn1">DELETE</button>
                </li>`;
       }
     })
@@ -96,11 +96,11 @@ function addCharacterBtn() {
   displayCharacters(charactersApi);
 }
 
-function deletecharacter(i) {
-  if (confirm("Ønsker du og slette karakteren?")) {
-    charactersApi.splice(i, 1);
-    characterList.innerHTML = "";
+// function deletecharacter(i) {
+//   if (confirm("Ønsker du og slette karakteren?")) {
+//     charactersApi.splice(i, 1);
+//     characterList.innerHTML = "";
 
-    displayCharacters(charactersApi);
-  }
-}
+//     displayCharacters(charactersApi);
+//   }
+// }
