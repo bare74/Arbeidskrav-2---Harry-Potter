@@ -38,10 +38,10 @@ function showStaffCards(staffArray) {
     }
 
     let staffName = document.createElement("h4");
-    staffName.innerText = staffArray[i].name;
+    staffName.innerText = "Navn:" + staffArray[i].name;
 
     let staffHouse = document.createElement("p");
-    staffHouse.innerText = staffArray[i].house;
+    staffHouse.innerText = "Hus:" + staffArray[i].house;
     if (staffArray[i].house === "") {
       staffHouse.innerText = "Intet hus funnet";
     }
@@ -59,7 +59,7 @@ function showStaffCards(staffArray) {
     }
 
     let patronusVar = document.createElement("h3");
-    patronusVar.innerText = staffArray[i].patronus;
+    patronusVar.innerText = "Patronus:" + staffArray[i].patronus;
     /*patronusVar.style.visibility = "hidden";
     if (staffArray[i].patronus === "") {
       patronusVar.innerText = "Ingen patronus";
