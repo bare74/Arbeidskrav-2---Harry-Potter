@@ -7,7 +7,7 @@ async function fetchStaff() {
     let data = await response.json();
     array.push(data);
 
-  // filtrate  staff in own array: staffArray
+// filtrate  staff in own array: staffArray
     data.filter((staff) => {
       if (staff.hogwartsStaff === true) {
         staffArray.push(staff);
@@ -21,7 +21,7 @@ async function fetchStaff() {
   }
 }
 
-// show staffmembers by name,pic and house,patronus hidden.
+// show staffmembers by name,pic and house,patronus.
 
 function showStaffCards(staffArray) {
   let staffContainer = document.getElementById("staff-container");
@@ -88,8 +88,6 @@ function showStaffCards(staffArray) {
 
 }
 
-
-
 // delete staff-member:
 
 function deleteStaffMember(staffArray, i) {
@@ -148,21 +146,6 @@ function createStaffMember() {
     showStaffCards(staffArray);
   }
 }
-
-/*function showPatronus(staffArray, i) {
-    alert("Hallo");
-    patronusVar.innerText = staffArray[i].patronus;
-    patronusVar.style.visibility = "visible";
-    innerText.append(div);
-}
-
-function hidePatronus(staffArray, i) {
-    patronusVar.innerText = staffArray[i].patronus;
-    patronusVar.style.visibility = "hidden";
-}
-
-img.addEventListener("mouseenter", showPatronus);
-img.addEventListener("mouseleave", hidePatronus); */
 
 let addstaffBtn = document.getElementById("add-staff-btn");
 addstaffBtn.addEventListener("click", createStaffMember);
