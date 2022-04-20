@@ -57,10 +57,13 @@ body {
   width: 100%;
   transition: width 0.3s;
 }
+.container{
+margin-bottom: 40px;
+}
 
 .characters-container {
-  padding: 100px;
-  margin: 0 auto;
+  padding: 50px;
+  margin: 40px;
   max-width: 1500px;
   text-align: center;
 }
@@ -83,6 +86,10 @@ body {
   overflow: hidden;
   transition: all 0.2s linear;
   padding: 80px 20px;
+}
+
+.staff-card > h4{
+  margin-bottom:20px;
 }
 
 .staff-card:hover {
