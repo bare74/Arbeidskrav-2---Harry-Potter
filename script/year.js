@@ -1,159 +1,150 @@
-
-//--------------------Search Bar---------------//
-
-
-//----------------------------------------------//
-let gryffHouse = document.getElementById("gryffImg");
-let huffHouse = document.getElementById("huffleImg");
-let ravenHouse = document.getElementById("ravenImg");
-let slythHouse = document.getElementById("slythImg");
-
-gryffHouse.addEventListener("click", () =>{
-    fetchData("Gryffindor", gryffHouse);
-      
-  });
-  huffHouse.addEventListener("click", () =>{
-    fetchData("Hufflepuff", huffHouse)
-  });
-  ravenHouse.addEventListener("click", ()=>{
-    fetchData("Ravenclaw", ravenHouse)
-  });
-  slythHouse.addEventListener("click", ()=>{
-    fetchData("Slytherin", slythHouse)
-  });
+let studentArray = [];
+let slytherinArray = []; 
+let gryffindorArray = [];
+let ravenclawArray = [];
+let hufflepuffArray = [];
+let studentContainer = document.getElementById("show-content");
+const searchBar = document.getElementById('searchBar');
 
 
 
+//---------------------------------------------------//
+async function fetchStudents() {
+    let response = await fetch("http://hp-api.herokuapp.com/api/characters/students"); // or API as defined
+    let data = await response.json();
+    studentArray.push(data);
+
+    data.filter((student) => {
+        if (student.house == "Slytherin") {
+            slytherinArray.push(student);
+        }
+        if (student.house == "Gryffindor") {
+            gryffindorArray.push(student);
+        }
+        if (student.house == "Ravenclaw") {
+            ravenclawArray.push(student);
+        }
+        if (student.house == "Hufflepuff") {
+            hufflepuffArray.push(student);
+        }
+
+    });
+}
 
 
-async function getStudents() {
-    let url = 'http://hp-api.herokuapp.com/api/characters';
-    try {
-        let res = await fetch(url);
-        return await res.json();
-    } catch (error) {
-        console.log(error);
+let houseOfSlytherin = document.getElementById("slytherinImg");
+houseOfSlytherin.addEventListener("click", function () {filterStudents("Slytherin");
+});
+
+let houseOfGryffindor = document.getElementById("gryffindorImg");
+houseOfGryffindor.addEventListener("click", function () {filterStudents("Gryffindor");
+});
+
+let houseOfRavenclaw = document.getElementById("ravenclawImg");
+houseOfRavenclaw.addEventListener("click", function () {filterStudents("Ravenclaw");
+});
+
+
+let houseOfHufflepuff = document.getElementById("hufflepuffImg");
+houseOfHufflepuff.addEventListener("click", function () {filterStudents("Hufflepuff");
+})
+
+function filterStudents(house) {
+    if (house == "Slytherin") {
+        let hogwartsHouse = slytherinArray;
+        showStudents(hogwartsHouse)};
+
+    if(house == "Gryffindor") {
+        let hogwartsHouse = gryffindorArray;
+        showStudents(hogwartsHouse)};
+
+    if (house == "Ravenclaw") {
+        let hogwartsHouse = ravenclawArray;
+        showStudents(hogwartsHouse)};
+
+    if (house == "Hufflepuff") {
+        let hogwartsHouse = hufflepuffArray;
+        showStudents(hogwartsHouse)};
+}
+
+function showStudents(hogwartsHouse) {
+    studentContainer.innerHTML = "";
+    for (let i = 0; i < hogwartsHouse.length; i++) {
+        let div = document.createElement("div");
+        div.classList.add("student-card");
+        div.style.backgroundColor = "rgb(107, 230, 134)";
+
+        let img = document.createElement("img");
+        img.classList.add("student-img");
+        img.src = hogwartsHouse[i].image;
+        if (hogwartsHouse[i].image === "") {
+            img.src = hogwartsHouse[i].image = "/assets/avatar.png";
+        }
+
+        let studentName = document.createElement("h3");
+        studentName.innerText = hogwartsHouse[i].name;
+
+        let studentHouse = document.createElement("p");
+        studentHouse.innerText = hogwartsHouse[i].house;
+            if (hogwartsHouse[i].house === "Slytherin") {
+                div.style.backgroundColor = "rgb(107, 230, 134)";
+            } else if (hogwartsHouse[i].house === "Gryffindor") {
+                div.style.backgroundColor = "rgb(151, 184, 226)";
+            } else if (hogwartsHouse[i].house === "Hufflepuff") {
+                div.style.backgroundColor = "rgb(231, 168, 226)";
+            } else if (hogwartsHouse[i].house === "Ravenclaw") {
+                div.style.backgroundColor = "rgb(231, 202, 140)"}
+
+        let studentAge = document.createElement("p");
+        if (hogwartsHouse[i].yearOfBirth == "") {
+            studentAge.innerText = "Alder: uvisst"
+        }
+        else { studentAge.innerText = `Alder: ${(2022 - hogwartsHouse[i].yearOfBirth)} år`; }
+
+        let studentAlive = document.createElement("p");
+        if (hogwartsHouse[i].alive == false) {
+            studentAlive.innerText = "I live: Nei";
+            studentAlive.style.color = "red";
+            studentAge.style.visibility = "hidden";
+        }
+        else {
+            studentAlive.innerText = "I live: Ja"
+        }
+
+        div.append(studentName, img, studentHouse, studentAge, studentAlive);
+        studentContainer.append(div);
     }
+}
+
+function renderData(hogwartsHouse) {
+    houseMembers = studentArray.filter(function (data) {
+      return data.house == hogwartsHouse;
+    });
+    showStudents(houseMembers);
   }
 
 
-  
-  async function gryffHouse() {
-    let users = await getStudents();
-    let html = '';
-    users.forEach(user => {
-      if((user.house === "Gryffindor") && (user.hogwartsStudent === true)){
-        let htmlSegment = 
-       `<div class="card">
-       <div class ="gryffCard">
-        <img class="user-img" src="${user.image}"</img>
-          <div class="container">
-          <ul>
-          <li><h2>Name:${user.name}</h2></li>
-          <li><h2>House:${user.house}</h2></li>
-          <li><h2>Age:${"2022"- user.yearOfBirth}</h2></li>
-          <li><h2>${user.alive === true}</h2></li>
-            </ul>
-          </div>
-          </div>
-        </div>
-        </div>`;
-  
-        html += htmlSegment;
-      
-      } 
+let createStudent = document.querySelector(".save-btn");
+createStudent.addEventListener("click", () => {
+  let src = "/assets/avatar.png";
+  let studentName = document.querySelector(".name-input").value;
+  let studentAge = document.querySelector(".age-input").value;
+  let house = document.querySelector("#selection").value;
+  if (studentName == "" || studentAge == "") {
+    alert("Alle felt må fylles ut.");
+  } else if (house === "none") {
+    alert("Må velge et hus");
+  } else if (isNaN(studentAge)) {
+    alert("Fyll inn Årstallet du er Født");
+  } else {
+    house = document.querySelector("#selection").value;
+    studentArray.push({
+      image: src,
+      name: studentName,
+      house: house,
+      yearOfBirth: studentAge,
     });
-  gryffHouse();
-    let content = document.querySelector('.cards');
-    content.innerHTML = html;
   }
-  async function huffleHouse() {
-    let users = await getStudents();
-    let html = '';
-    users.forEach(user => {
-      if((user.house === "Hufflepuff") && (user.hogwartsStudent === true)){
-        let htmlSegment = 
-       `<div class="card">
-       <div class="huffCard"> 
-        <img class="user-img" src="${user.image}"</img>
-          <div class="container">
-          <ul>
-          <li><h2>Name:${user.name}</h2></li>
-          <li><h2>House:${user.house}</h2></li>
-          <li><h2>Age:${user.yearOfBirth - "2020"}</h2></li>
-          <li><h2>${user.alive}</h2></li>
-            </ul>
-          </div>
-          </div>
-        </div>
-        </div>`;
-  
-        html += htmlSegment;
-      
-      } 
-    });
-    huffleHouse();
-    let content = document.querySelector('.cards');
-    content.innerHTML = html;
-  }
-  async function ravenHouse() {
-    let users = await getStudents();
-    let html = '';
-    users.forEach(user => {
-      if((user.house === "Ravenclaw") && (user.hogwartsStudent === true)){
-        let htmlSegment = 
-       `<div class="card">
-       <div class="ravenCard">
-        <img class="user-img" src="${user.image}"</img>
-          <div class="container">
-          <ul>
-          <li><h2>Name:${user.name}</h2></li>
-          <li><h2>House:${user.house}</h2></li>
-          <li><h2>Age:${user.yearOfBirth - "2020"}</h2></li>
-          <li><h2>${user.alive}</h2></li>
-            </ul>
-          </div>
-          </div>
-        </div>
-        </div>`;
-  
-        html += htmlSegment;
-      
-      } 
-    });
-    ravenHouse();
-    let content = document.querySelector('.cards');
-    content.innerHTML = html;
-  }
-  async function slythHouse() {
-    let users = await getStudents();
-    let html = '';
-    users.forEach(user => {
-      if((user.house === "Gryffindor") && (user.hogwartsStudent === true)){
-        let htmlSegment = 
-       `<div class="card">
-       <div class="slythCard"> 
-        <img class="user-img" src="${user.image}"</img>
-          <div class="container">
-          <ul>
-          <li><h2>Name:${user.name}</h2></li>
-          <li><h2>House:${user.house}</h2></li>
-          <li><h2>Age:${user.yearOfBirth - "2020"}</h2></li>
-          <li><h2>${user.alive}</h2></li>
-            </ul>
-          </div>
-          </div>
-        </div>
-        </div>`;
-  
-        html += htmlSegment;
-      
-      } 
-    });
-    slythHouse();
-    let content = document.querySelector('.cards');
-    content.innerHTML = html;
-  }
- 
-
-
+  renderData(house);
+});
+fetchStudents();
