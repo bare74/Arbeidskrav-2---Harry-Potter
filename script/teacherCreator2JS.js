@@ -107,7 +107,7 @@ function editStaffMember(staffArray, i) {
   let newImage = "./assets/avatar.png";
 
   if (editedName == "" || editedHouse == "" || editedPatronus == "") {
-    alert("Husk alle felter må fylles ut!");
+    alert("Husk alle felter må fylles ut!");return;
   } else {
     staffArray[i] = ({
       name: editedName,
@@ -131,7 +131,7 @@ function createStaffMember() {
   let newImage = "./assets/avatar.png";
 
   if (staffName == "" || staffHouse == "" || staffPatronus == "") {
-    alert("Husk alle felter må fylles ut!");
+    alert("Husk alle felter må fylles ut!");return;
   } else {
     staffArray.unshift({
       name: staffName,
