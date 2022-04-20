@@ -33,3 +33,11 @@ button {
 #add-staff-btn{
   background-color:rgb(107, 230, 134) ;
 }
+
+
+.h3 {
+  display: none;
+}
+.staff-card:hover .h3 {
+  display: block;
+}
