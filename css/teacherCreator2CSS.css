@@ -2,7 +2,7 @@
 * {
   margin: 0;
   padding: 0;
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
 }
 
 html,
@@ -71,13 +71,13 @@ margin-bottom: 40px;
 #staff-container {
   padding-inline-start: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   grid-gap: 20px;
 
 }
 
 .staff-card {
-  width: 250px;
+  width: 280px;
   text-align: center;
  list-style-type: none;
   background: white;
