@@ -130,7 +130,7 @@ function createStaffMember() {
   let staffName = document.getElementById("staff-name").value;
   let staffHouse = document.getElementById("staff-house").value;
   let staffPatronus = document.getElementById("staff-patronus").value;
-  let newImage = "./images/avatar.jpg";
+  let newImage = "./assets/avatar.png";
 
   if (staffName == "" || staffHouse == "" || staffPatronus == "") {
     alert("Husk alle felter må fylles ut!");
