@@ -58,12 +58,12 @@ function showStaffCards(staffArray) {
       div.style.backgroundColor = "rgb(135, 141, 164)";
     }
 
-    let patronusVar = document.createElement("p");
+    let patronusVar = document.createElement("h3");
     patronusVar.innerText = staffArray[i].patronus;
-    patronusVar.style.visibility = "hidden";
+    /*patronusVar.style.visibility = "hidden";
     if (staffArray[i].patronus === "") {
       patronusVar.innerText = "Ingen patronus";
-    }
+    }*/
 
     // delete-button:
     let deleteStaff = document.createElement("button");

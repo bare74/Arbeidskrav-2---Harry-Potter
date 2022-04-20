@@ -35,9 +35,9 @@ button {
 }
 
 
-.h3 {
+h3 {
   display: none;
 }
-.staff-card:hover .h3 {
+.staff-card:hover h3 {
   display: block;
 }
