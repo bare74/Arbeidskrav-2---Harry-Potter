@@ -34,7 +34,7 @@ function showStaffCards(staffArray) {
     img.classList.add("staff-img");
     img.src = staffArray[i].image;
     if (staffArray[i].image === "") {
-      img.src = staffArray[i].image = "./images/avatar.jpg";
+      img.src = staffArray[i].image = "./assets/avatar.png";
     }
 
     let staffName = document.createElement("h4");
@@ -130,7 +130,7 @@ function createStaffMember() {
   let staffName = document.getElementById("staff-name").value;
   let staffHouse = document.getElementById("staff-house").value;
   let staffPatronus = document.getElementById("staff-patronus").value;
-  let newImage = "./images/avatar.jpg";
+  let newImage = "./assets/avatar.png";
 
   if (staffName == "" || staffHouse == "" || staffPatronus == "") {
     alert("Husk alle felter må fylles ut!");
