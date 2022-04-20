@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -57,8 +56,8 @@ body {
   width: 100%;
   transition: width 0.3s;
 }
-.container{
-margin-bottom: 40px;
+.container {
+  margin-bottom: 40px;
 }
 
 .characters-container {
@@ -73,13 +72,13 @@ margin-bottom: 40px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   grid-gap: 20px;
-
 }
 
 .staff-card {
   width: 280px;
+  height: 430px;
   text-align: center;
- list-style-type: none;
+  list-style-type: none;
   background: white;
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
@@ -88,8 +87,8 @@ margin-bottom: 40px;
   padding: 80px 20px;
 }
 
-.staff-card > h4{
-  margin-bottom:20px;
+.staff-card > h4 {
+  margin-bottom: 20px;
 }
 
 .staff-card:hover {
@@ -98,19 +97,18 @@ margin-bottom: 40px;
 }
 
 .staff-img {
- max-height: 200px;
+  max-height: 200px;
   max-width: 150px;
 }
 
 button {
   padding: 5px 10px;
-  margin:10px;
+  margin: 10px;
 }
 
-#add-staff-btn{
-  background-color:rgb(107, 230, 134) ;
+#add-staff-btn {
+  background-color: rgb(107, 230, 134);
 }
-
 
 h3 {
   display: none;
