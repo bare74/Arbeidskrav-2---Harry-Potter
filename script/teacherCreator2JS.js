@@ -34,7 +34,7 @@ function showStaffCards(staffArray) {
     img.classList.add("staff-img");
     img.src = staffArray[i].image;
     if (staffArray[i].image === "") {
-      img.src = staffArray[i].image = "./images/avatar.jpg";
+      img.src = staffArray[i].image = "./assets/avatar.png";
     }
 
     let staffName = document.createElement("h4");
