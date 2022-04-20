@@ -106,7 +106,7 @@ function editStaffMember(staffArray, i) {
   let editedName = prompt("Nytt navn ?");
   let editedHouse = prompt("Nytt hus ?");
   let editedPatronus = prompt("Ny patronus ?");
-  let newImage = "./images/avatar.jpg";
+  let newImage = "./assets/avatar.png";
 
   if (editedName == "" || editedHouse == "" || editedPatronus == "") {
     alert("Husk alle felter må fylles ut!");
