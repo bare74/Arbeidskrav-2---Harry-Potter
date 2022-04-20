@@ -135,7 +135,7 @@ function createStaffMember() {
   if (staffName == "" || staffHouse == "" || staffPatronus == "") {
     alert("Husk alle felter må fylles ut!");
   } else {
-    staffArray.push({
+    staffArray.unshift({
       name: staffName,
       image: newImage,
       house: staffHouse,
