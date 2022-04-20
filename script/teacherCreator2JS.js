@@ -60,10 +60,10 @@ function showStaffCards(staffArray) {
 
     let patronusVar = document.createElement("h3");
     patronusVar.innerText = "Patronus: " + staffArray[i].patronus;
-    /*patronusVar.style.visibility = "hidden";
+    
     if (staffArray[i].patronus === "") {
       patronusVar.innerText = "Ingen patronus";
-    }*/
+    }
 
     // delete-button:
     let deleteStaff = document.createElement("button");
