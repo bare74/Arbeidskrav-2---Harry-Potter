@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/yearbook.css">
+    <title>Yearbook</title>
+</head>
+<body>
+    <header><h1> Velkommen til Hogwarts</h1></header>
+
+
+    <div id="main-container">
+
+<div class="searchWrapper">
+    <input
+    type="text"
+    placeholder="Skriv Navnet på den du søker "
+    id="searchbar"/>
+    <button id="search-btn">Søk</button>
+</div>
+
+
+
+<div class="add-New-Character">
+    <h2>Ny student? Registrer deg her</h2>
+    <input type="text" placeholder="Navn:" class="name-input" />
+    <input type="text" placeholder="Skriv inn Fødsels Årstall:" class="age-input" />
+    <div id="houseMenu" class="house-list">
+        <label for="select"><p>Velg Hus:</p></label>
+        <select id="houseList">
+        
+          <option value="none">Select</option>
+          <option value="Gryffindor">Gryffindor</option>
+          <option value="Hufflepuff">Hufflepuff</option>
+          <option value="Ravenclaw">Ravenclaw</option>
+          <option value="Slytherin">Slytherin</option>
+</select>
+</div>
+     <button class="save-btn">Save</button>
+  </div>
+</div>
+
+    <div class="inner-container">
+
+        <div class="gryffindor-container">
+            <img id="gryffindorImg" src="/assets/Gryffindor-Logo.png" alt="Gryffindor-Badge">
+        </div>
+
+        <div class="hufflepuff-container">
+            <img id="hufflepuffImg" src="/assets/Huffelpuff-Logo.png" alt="Hufflepuff-Badge">
+        </div>
+
+        <div class="ravenclaw-container">
+            <img id="ravenclawImg"src="/assets/Ravenclaw-Logo.png" alt="Ravenclaw-Badge">
+       
+        </div>
+        <div class="slytherin-container">
+            <img id="slytherinImg" src= "/assets/Slytherin-Logo.png" alt="Slytherin-Badge">
+
+        </div> 
+    </div>
+    <div id="show-content"></div>
+</div>
+    <script src="/script/year.js"></script>
+</body>
+</html>
