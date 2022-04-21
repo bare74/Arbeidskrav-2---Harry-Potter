@@ -169,7 +169,7 @@ function renderData(hogwartsHouse) {
 
 let createStudent = document.querySelector(".save-btn");
 createStudent.addEventListener("click", () => {
-  let imgSrc = "/Test for HP fetch/assets/background.jpg";
+  let imgSrc = "/assets/avatar.png";
   let studentName = document.querySelector(".name-input").value;
   let studentAge = document.querySelector(".age-input").value;
   let studentHouse = document.getElementById("houseList").value;
