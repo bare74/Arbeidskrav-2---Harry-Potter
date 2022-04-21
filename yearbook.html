@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,60 +8,61 @@
     <title>Yearbook</title>
 </head>
 <body>
-            <header><h1>Hogwarts Houses</h1></header>
+    <header><h1> Velkommen til Hogwarts</h1></header>
 
 
-    <div class="main-container">
+    <div id="main-container">
 
-<div class="search-wrapper">
+<div class="searchWrapper">
     <input
     type="text"
-    placeholder="Søk "
-    class="searchbar"/>
+    placeholder="Skriv Navnet på den du søker "
+    id="searchbar"/>
+    <button id="search-btn">Søk</button>
 </div>
 
-<h1> Her kan du legge til en Student</h1>
 
-<div class="add-character">
-    <input
-     type="text"
-     placeholder="Skriv ditt Navn"
-     class="input-Name">
-    
-     <input
-     type="text"
-     placeholder="Skriv Huset du vil bli med i"
-     class="input-House>">
-    
-     <input
-     type="text"
-     placeholder="Alder"
-     class="input-Age">     
+
+<div class="add-New-Character">
+    <h2>Ny student? Registrer deg her</h2>
+    <input type="text" placeholder="Navn:" class="name-input" />
+    <input type="text" placeholder="Skriv inn Fødsels Årstall:" class="age-input" />
+    <div id="houseMenu" class="house-list">
+        <label for="select"><p>Velg Hus:</p></label>
+        <select id="houseList">
+        
+          <option value="none">Select</option>
+          <option value="Gryffindor">Gryffindor</option>
+          <option value="Hufflepuff">Hufflepuff</option>
+          <option value="Ravenclaw">Ravenclaw</option>
+          <option value="Slytherin">Slytherin</option>
+</select>
+</div>
+     <button class="save-btn">Save</button>
+  </div>
 </div>
 
     <div class="inner-container">
 
         <div class="gryffindor-container">
-            <img id="gryffindorImg" onclick="gryffHouse()" src="/assets/Gryffindor-Logo.png" alt="Gryffindor-Badge">
+            <img id="gryffindorImg" src="/assets/Gryffindor-Logo.png" alt="Gryffindor-Badge">
         </div>
 
         <div class="hufflepuff-container">
-            <img id="hufflepuffImg" onclick="huffleHouse()" src="/assets/Huffelpuff-Logo.png" onclick="hufflepuff()" alt="Hufflepuff-Badge">
+            <img id="hufflepuffImg" src="/assets/Huffelpuff-Logo.png" alt="Hufflepuff-Badge">
         </div>
 
         <div class="ravenclaw-container">
-            <img id="ravenclawImg" onclick="ravenHouse()" src="/assets/Ravenclaw-Logo.png" onclick="ravenclaw()" alt="Ravenclaw-Badge">
+            <img id="ravenclawImg"src="/assets/Ravenclaw-Logo.png" alt="Ravenclaw-Badge">
        
         </div>
         <div class="slytherin-container">
-            <img id="slytherinImg" onclick="slythHouse()" src= "/assets/Slytherin-Logo.png" onclick="slytherin()" alt="Slytherin-Badge">
+            <img id="slytherinImg" src= "/assets/Slytherin-Logo.png" alt="Slytherin-Badge">
 
         </div> 
     </div>
-    <div class="cards"></div>
+    <div id="show-content"></div>
 </div>
-
     <script src="/script/year.js"></script>
-
 </body>
 </html>
