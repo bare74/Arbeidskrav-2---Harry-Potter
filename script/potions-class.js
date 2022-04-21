@@ -48,7 +48,7 @@ function createNewStudent(arr, i) {
         const randomNumber = uniqueStudents[i];
 
         studentsActive[i].innerHTML = `
-        <img class='student-img' alt='${!arr[randomNumber].image ? 'Missing image avatar' : arr[randomNumber].name + ' image'} src=${!arr[randomNumber].image ? "./assets/avatar.png" : arr[randomNumber].image} />
+        <img class='student-img' alt='${!arr[randomNumber].image ? 'Missing image avatar' : arr[randomNumber].name + ' image'}' image' src=${!arr[randomNumber].image ? "./assets/avatar.png" : arr[randomNumber].image} />
         <p>Navn: ${arr[randomNumber].name}</p>
         <p>Hus: ${arr[randomNumber].house ? arr[randomNumber].house : 'Intet hus'}</p>
         <button class='delete-student-btn'>Slett elev</button>
@@ -103,7 +103,7 @@ function createStudentsCards() {
     uniqueStudents.forEach(student => {
         pupilsContainer.innerHTML += `
             <li class='student-container'>
-                <img class='student-img' alt='${!students[student].image ? 'Missing image avatar' : students[student].name + ' image'}' src=${!students[student].image ? "./assets/avatar.png" : students[student].image} />
+                <img class='student-img' alt='${!students[student].image ? 'Missing image avatar' : students[student].name + ' image'}' image' src=${!students[student].image ? "./assets/avatar.png" : students[student].image} />
                 <p>Navn: ${students[student].name}</p>
                 <p>Hus: ${students[student].house ? students[student].house : 'Intet hus'}</p>
                 <button class='delete-student-btn'>Slett elev</button>
