@@ -101,9 +101,9 @@ function deleteStaffMember(staffArray, i) {
 // edit staff-member:
 
 function editStaffMember(staffArray, i) {
-  let editedName = prompt("Nytt navn ?");
-  let editedHouse = prompt("Nytt hus ?");
-  let editedPatronus = prompt("Ny patronus ?");
+  let editedName = prompt("Nytt navn...");
+  let editedHouse = prompt("Nytt hus...");
+  let editedPatronus = prompt("Ny patronus...");
   let newImage = "./assets/avatar.png";
 
   if (editedName == "" || editedHouse == "" || editedPatronus == "") {
