@@ -57,23 +57,3 @@ body {
   transition: width 0.3s;
 }
 
-.addCharacter {
-  padding: 100px 0px 0px 0px;
-  margin: 0 auto;
-  max-width: 1500px;
-  text-align: center;
-}
-
-.addCharacter li a {
-  text-decoration: none;
-  letter-spacing: 1px;
-}
-
-.addCharacter ul {
-  margin-top: 15px;
-}
-
-.addCharacter li {
-  padding-left: 50px;
-  display: inline-block;
-}
