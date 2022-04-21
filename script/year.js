@@ -121,7 +121,7 @@ function showStudents(hogwartsHouse) {
         img.classList.add("student-img");
         img.src = hogwartsHouse[i].image;
         if (hogwartsHouse[i].image === "") {
-            img.src = hogwartsHouse[i].image = "./images/avatar.jpg";
+            img.src = hogwartsHouse[i].image = "/assets/avatar.png";
         }
 
         let studentName = document.createElement("h3");
