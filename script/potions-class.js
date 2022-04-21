@@ -48,7 +48,7 @@ function createNewStudent(arr, i) {
         const randomNumber = uniqueStudents[i];
 
         studentsActive[i].innerHTML = `
-        <img class='student-img' alt='${!arr[randomNumber].image ? 'Missing image avatar' : arr[randomNumber].name + ' image'} src=${!arr[randomNumber].image ? "./assets/avatar.png" : arr[randomNumber].image} />
+        <img class='student-img' alt='${!arr[randomNumber].image ? 'Missing image avatar' : arr[randomNumber].name + ' image'}' src=${!arr[randomNumber].image ? "./assets/avatar.png" : arr[randomNumber].image} />
         <p>Navn: ${arr[randomNumber].name}</p>
         <p>Hus: ${arr[randomNumber].house ? arr[randomNumber].house : 'Intet hus'}</p>
         <button class='delete-student-btn'>Slett elev</button>
