@@ -6,49 +6,49 @@ let hufflepuffArray = [];
 let studentContainer = document.getElementById("show-content");
 const searchBar = document.getElementById('search-btn');
 //------------------------------------------------------------//
-const studentListSearch = document.getElementById('show-content');
-let searchStudents = [];
+// const studentListSearch = document.getElementById('show-content');
+// let searchStudents = [];
 
-searchbar.addEventListener('click', (e) => {
-    const searchString = e.target.value.toLowerCase();
+// searchbar.addEventListener('click', (e) => {
+//     const searchString = e.target.value.toLowerCase();
 
-    const filteredStudents = searchStudents.filter((student) => {
-        return (
-            student.name.toLowerCase().includes(searchString) ||
-            student.house.toLowerCase().includes(searchString)||
-            student.yearOfBirth.toLowerCase().includes(searchString)
-        );
-    });
-    displayStudents(filteredStudents);
-});
+//     const filteredStudents = searchStudents.filter((student) => {
+//         return (
+//             student.name.toLowerCase().includes(searchString) ||
+//             student.house.toLowerCase().includes(searchString)||
+//             student.yearOfBirth.toLowerCase().includes(searchString)
+//         );
+//     });
+//     displayStudents(filteredStudents);
+// });
 
-const loadStudents = async () => {
-    try {
-        const res = await fetch('https://hp-api.herokuapp.com/api/characters');
-        searchStudents = await res.json();
-        displayStudents(searchStudents);
-    } catch (err) {
-        console.error(err);
-    }
-};
+// const loadStudents = async () => {
+//     try {
+//         const res = await fetch('https://hp-api.herokuapp.com/api/characters');
+//         searchStudents = await res.json();
+//         displayStudents(searchStudents);
+//     } catch (err) {
+//         console.error(err);
+//     }
+// };
 
-const displayStudents = (characters) => {
-    const htmlString = characters
-        .map((student) => {
-            return `
-            <li class="character">
-            <img src="${student.image}"></img>
-            <h2>${student.name}</h2>
-            <p>House: ${student.house}</p> 
-            <p>Age: ${"2022" - student.yearOfBirth}</p>
-            </li>
-        `;
-        })
-        .join('');
-        studentListSearch.innerHTML = htmlString;
-};
+// const displayStudents = (characters) => {
+//     const htmlString = characters
+//         .map((student) => {
+//             return `
+//             <li class="character">
+//             <img src="${student.image}"></img>
+//             <h2>${student.name}</h2>
+//             <p>House: ${student.house}</p> 
+//             <p>Age: ${"2022" - student.yearOfBirth}</p>
+//             </li>
+//         `;
+//         })
+//         .join('');
+//         studentListSearch.innerHTML = htmlString;
+// };
 
-loadStudents();
+// loadStudents();
 
 
 //---------------------------------------------------//
