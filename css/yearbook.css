@@ -14,14 +14,14 @@ body{
   background-position: center;
  
 }
-header{
+/* header{
   text-align: center;
   font-size: 40px;
   color: black;
-}
-.main-container{
+} */
+/* .main-container{
   width: 100%;
-}
+} */
 /*Search Bar*/
 .searchWrapper{
   margin-top: 45px;
