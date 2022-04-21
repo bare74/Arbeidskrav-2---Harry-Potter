@@ -4,8 +4,51 @@ let gryffindorArray = [];
 let ravenclawArray = [];
 let hufflepuffArray = [];
 let studentContainer = document.getElementById("show-content");
-const searchBar = document.getElementById('searchBar');
+const searchBar = document.getElementById('search-btn');
+//------------------------------------------------------------//
+const studentListSearch = document.getElementById('show-content');
+let searchStudents = [];
 
+searchbar.addEventListener('click', (e) => {
+    const searchString = e.target.value.toLowerCase();
+
+    const filteredStudents = searchStudents.filter((student) => {
+        return (
+            student.name.toLowerCase().includes(searchString) ||
+            student.house.toLowerCase().includes(searchString)||
+            student.yearOfBirth.toLowerCase().includes(searchString)
+        );
+    });
+    displayStudents(filteredStudents);
+});
+
+const loadStudents = async () => {
+    try {
+        const res = await fetch('https://hp-api.herokuapp.com/api/characters');
+        searchStudents = await res.json();
+        displayStudents(searchStudents);
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+const displayStudents = (characters) => {
+    const htmlString = characters
+        .map((student) => {
+            return `
+            <li class="character">
+            <img src="${student.image}"></img>
+            <h2>${student.name}</h2>
+            <p>House: ${student.house}</p> 
+            <p>Age: ${"2022" - student.yearOfBirth}</p>
+            </li>
+        `;
+        })
+        .join('');
+        studentListSearch.innerHTML = htmlString;
+};
+
+loadStudents();
 
 
 //---------------------------------------------------//
@@ -78,7 +121,7 @@ function showStudents(hogwartsHouse) {
         img.classList.add("student-img");
         img.src = hogwartsHouse[i].image;
         if (hogwartsHouse[i].image === "") {
-            img.src = hogwartsHouse[i].image = "/assets/avatar.png";
+            img.src = hogwartsHouse[i].image = "./images/avatar.jpg";
         }
 
         let studentName = document.createElement("h3");
@@ -87,13 +130,13 @@ function showStudents(hogwartsHouse) {
         let studentHouse = document.createElement("p");
         studentHouse.innerText = hogwartsHouse[i].house;
             if (hogwartsHouse[i].house === "Slytherin") {
-                div.style.backgroundColor = "rgb(107, 230, 134)";
+                div.style.backgroundColor = "rgb(0, 153, 0)";
             } else if (hogwartsHouse[i].house === "Gryffindor") {
-                div.style.backgroundColor = "rgb(151, 184, 226)";
+                div.style.backgroundColor = "rgb(153, 0, 0)";
             } else if (hogwartsHouse[i].house === "Hufflepuff") {
-                div.style.backgroundColor = "rgb(231, 168, 226)";
+                div.style.backgroundColor = "rgb(255, 255, 51)";
             } else if (hogwartsHouse[i].house === "Ravenclaw") {
-                div.style.backgroundColor = "rgb(231, 202, 140)"}
+                div.style.backgroundColor = "rgb(51, 51, 255)"}
 
         let studentAge = document.createElement("p");
         if (hogwartsHouse[i].yearOfBirth == "") {
@@ -126,25 +169,49 @@ function renderData(hogwartsHouse) {
 
 let createStudent = document.querySelector(".save-btn");
 createStudent.addEventListener("click", () => {
-  let src = "/assets/avatar.png";
+  let imgSrc = "/Test for HP fetch/assets/background.jpg";
   let studentName = document.querySelector(".name-input").value;
   let studentAge = document.querySelector(".age-input").value;
-  let house = document.getElementById("houseList").value;
+  let studentHouse = document.getElementById("houseList").value;
   if (studentName == "" || studentAge == "") {
     alert("Alle felt må fylles ut.");
-  } else if (house === "none") {
+  }  if (studentHouse === "none") {
     alert("Må velge et hus");
-  } else if (isNaN(studentAge)) {
+  }  if (isNaN(studentAge)) {
     alert("Fyll inn Årstallet du er Født");
-  } else {
-    house = document.getElementById("houseList").value;
-    studentArray.push({
-      image: src,
+  }
+  if (studentHouse == "Slytherin") {
+    slytherinArray.unshift({
       name: studentName,
-      house: house,
+      image: imgSrc,
+      house: studentHouse,
       yearOfBirth: studentAge,
     });
   }
-  renderData(house);
+  if (studentHouse == "Gryffindor") {
+    gryffindorArray.unshift({
+      name: studentName,
+      image: imgSrc,
+      house: studentHouse,
+      yearOfBirth: studentAge,
+    });
+  }
+  if (studentHouse == "Ravenclaw") {
+    ravenclawArray.unshift({
+      name: studentName,
+      image: imgSrc,
+      house: studentHouse,
+      yearOfBirth: yearOfBirth,
+    });
+  }
+  if (studentHouse == "Hufflepuff") {
+    hufflepuffArray.unshift({
+      name: studentName,
+      image: imgSrc,
+      house: studentHouse,
+      yearOfBirth: studentAge,
+    });
+  }
+  renderData(studentHouse);
 });
 fetchStudents();
