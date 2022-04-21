@@ -130,13 +130,13 @@ function showStudents(hogwartsHouse) {
         let studentHouse = document.createElement("p");
         studentHouse.innerText = hogwartsHouse[i].house;
             if (hogwartsHouse[i].house === "Slytherin") {
-                div.style.backgroundColor = "rgb(0, 153, 0)";
+                div.style.backgroundColor = "rgb(107, 230,134)";
             } else if (hogwartsHouse[i].house === "Gryffindor") {
-                div.style.backgroundColor = "rgb(153, 0, 0)";
+                div.style.backgroundColor = "rgb(151, 184, 226)";
             } else if (hogwartsHouse[i].house === "Hufflepuff") {
-                div.style.backgroundColor = "rgb(255, 255, 51)";
+                div.style.backgroundColor = "rgb(231, 168, 226)";
             } else if (hogwartsHouse[i].house === "Ravenclaw") {
-                div.style.backgroundColor = "rgb(51, 51, 255)"}
+                div.style.backgroundColor = "rgb(231, 202, 140)"}
 
         let studentAge = document.createElement("p");
         if (hogwartsHouse[i].yearOfBirth == "") {
