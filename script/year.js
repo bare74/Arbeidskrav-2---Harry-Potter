@@ -129,7 +129,7 @@ createStudent.addEventListener("click", () => {
   let src = "/assets/avatar.png";
   let studentName = document.querySelector(".name-input").value;
   let studentAge = document.querySelector(".age-input").value;
-  let house = document.querySelector("#selection").value;
+  let house = document.getElementById("houseList").value;
   if (studentName == "" || studentAge == "") {
     alert("Alle felt må fylles ut.");
   } else if (house === "none") {
@@ -137,7 +137,7 @@ createStudent.addEventListener("click", () => {
   } else if (isNaN(studentAge)) {
     alert("Fyll inn Årstallet du er Født");
   } else {
-    house = document.querySelector("#selection").value;
+    house = document.getElementById("houseList").value;
     studentArray.push({
       image: src,
       name: studentName,
