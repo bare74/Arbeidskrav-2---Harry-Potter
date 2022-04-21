@@ -1,77 +1,152 @@
-import { API } from "../script/index.js";
-const characterList = document.getElementById("characterList");
-const searchBar = document.getElementById("searchBar");
+let array = [];
+let staffArray = [];
 
-let charactersApi = [];
-let y = [];
-
-searchBar.addEventListener("keyup", (e) => {
-  const searchString = e.target.value.toLowerCase();
-
-  const filterCharacters = charactersApi.filter((characters) => {
-    return (
-      characters.name.toLowerCase().includes(searchString) ||
-      characters.house.toLowerCase().includes(searchString)
-    );
-  });
-  if (filterCharacters == "") {
-    alert("Please type a Harry Potter characters / House ");
-  }
-
-  displayCharacters(filterCharacters);
-});
-
-const loadCharacters = async () => {
+async function fetchStaff() {
   try {
-    const res = await fetch(API);
-    charactersApi = await res.json();
+    let response = await fetch("http://hp-api.herokuapp.com/api/characters"); // or API as defined
+    let data = await response.json();
+    array.push(data);
 
-    displayCharacters(charactersApi);
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-const displayCharacters = (characters) => {
-  const htmlString = characters
-    .map((characters) => {
-      if (characters.hogwartsStaff === true) {
-        if (characters.image === "") {
-          return `<li class="characters">
-                    <h4>${characters.name}</h4>
-                    <p>${characters.house}</p>
-                    <span class="span">${characters.patronus}</span>
-                   <img class "missing-characters src="./assets/avatar.png" alt="Harry Potter characters"></img>
-                </li>`;
-        }
-        return `<li class="characters">
-                  <h4>${characters.name}</h4>
-                  <p>${characters.house}</p>
-                  <span class="span">${characters.patronus}</span>
-                  <img src="${characters.image}"></img>
-               </li>`;
+    // filtrate  staff in own array: staffArray
+    data.filter((staff) => {
+      if (staff.hogwartsStaff === true) {
+        staffArray.push(staff);
+        console.log(staffArray);
       }
-    })
-
-    .join("");
-  characterList.innerHTML = htmlString;
-};
-
-loadCharacters();
-
-function addCharacter() {
-  var newstaff = document.getElementById("characters-input").value;
-  document.getElementById("characters-input").value = "";
-
-  y.push({
-    name: newstaff,
-    hogwartsStaff: true,
-    image:
-      (src = `https://w7.pngwing.com/pngs/7/618/png-transparent-man-illustration-avatar-icon-fashion-men-avatar-face-fashion-girl-heroes-thumbnail.png`),
-  });
-
-  var z = charactersApi.concat(y);
-  console.log("test", z);
-
-  displayCharacters(z);
+    });
+    showStaffCards(staffArray);
+  } catch (err) {
+    console.log(err);
+  }
 }
+
+// show staffmembers by name,pic and house,patronus.
+
+function showStaffCards(staffArray) {
+  let staffContainer = document.getElementById("staff-container");
+  staffContainer.innerHTML = "";
+  for (let i = 0; i < staffArray.length; i++) {
+    let div = document.createElement("div");
+    div.classList.add("staff-card");
+
+    let img = document.createElement("img");
+    img.classList.add("staff-img");
+    img.src = staffArray[i].image;
+    if (staffArray[i].image === "") {
+      img.src = staffArray[i].image = "./assets/avatar.png";
+    }
+
+    let staffName = document.createElement("h4");
+    staffName.innerText = "Navn: " + staffArray[i].name;
+
+    let staffHouse = document.createElement("p");
+    staffHouse.innerText = "Hus: " + staffArray[i].house;
+    if (staffArray[i].house === "") {
+      staffHouse.innerText = "Intet hus funnet";
+    }
+    // styling houses:
+    if (staffArray[i].house === "Slytherin") {
+      div.style.backgroundColor = "rgb(107, 230, 134)";
+    } else if (staffArray[i].house === "Gryffindor") {
+      div.style.backgroundColor = "rgb(151, 184, 226)";
+    } else if (staffArray[i].house === "Hufflepuff") {
+      div.style.backgroundColor = "rgb(231, 168, 226)";
+    } else if (staffArray[i].house === "Ravenclaw") {
+      div.style.backgroundColor = "rgb(231, 202, 140)";
+    } else {
+      div.style.backgroundColor = "rgb(135, 141, 164)";
+    }
+
+    let patronusVar = document.createElement("h3");
+    patronusVar.innerText = "Patronus: " + staffArray[i].patronus;
+
+    if (staffArray[i].patronus === "") {
+      patronusVar.innerText = "Ingen patronus";
+    }
+
+    // delete-button:
+    let deleteStaff = document.createElement("button");
+    deleteStaff.innerText = "Slett lærer";
+    deleteStaff.classList.add("delete-btn");
+    deleteStaff.addEventListener("click", function () {
+      deleteStaffMember(staffArray, i);
+    });
+
+    // edit-button:
+    let editStaff = document.createElement("button");
+    editStaff.innerText = "Endre lærer";
+    editStaff.classList.add("edit-btn");
+    editStaff.addEventListener("click", function () {
+      editStaffMember(staffArray, i);
+    });
+    div.append(staffName, img, staffHouse, patronusVar, deleteStaff, editStaff);
+    staffContainer.append(div);
+  }
+}
+
+// delete staff-member:
+
+function deleteStaffMember(staffArray, i) {
+  let answer = prompt("Ønsker du å slette?(ja/nei)");
+  if (answer === "ja") {
+    staffArray.splice(i, 1);
+    showStaffCards(staffArray);
+  }
+}
+
+// edit staff-member:
+
+function editStaffMember(staffArray, i) {
+  let editedName = prompt("Nytt navn...");
+  let editedHouse = prompt("Nytt hus...");
+  let editedPatronus = prompt("Ny patronus...");
+  let newImage = "./assets/avatar.png";
+
+  if (editedName == "" || editedHouse == "" || editedPatronus == "") {
+    alert("Husk alle felter må fylles ut!");
+    return;
+  } else {
+    staffArray[i] = {
+      name: editedName,
+      image: newImage,
+      house: editedHouse,
+      patronus: editedPatronus,
+    };
+  }
+  let answer = prompt("Ønsker du virkelig å endre ansatt? (ja/nei)");
+  if (answer === "ja") {
+    showStaffCards(staffArray);
+  }
+}
+
+// create new staff-member:
+
+function createStaffMember() {
+  let staffName = document.getElementById("staff-name").value;
+  let staffHouse = document.getElementById("staff-house").value;
+  let staffPatronus = document.getElementById("staff-patronus").value;
+  let newImage = "./assets/avatar.png";
+
+  if (staffName == "" || staffHouse == "" || staffPatronus == "") {
+    alert("Husk alle felter må fylles ut!");
+    return;
+  } else {
+    staffArray.unshift({
+      name: staffName,
+      image: newImage,
+      house: staffHouse,
+      patronus: staffPatronus,
+    });
+  }
+
+  let answer = prompt("Ønsker du å lagre ansatt? (ja/nei)");
+  if (answer === "ja") {
+    showStaffCards(staffArray);
+  }
+}
+
+let addstaffBtn = document.getElementById("add-staff-btn");
+addstaffBtn.addEventListener("click", createStaffMember);
+
+fetchStaff();
+showStaffCards;

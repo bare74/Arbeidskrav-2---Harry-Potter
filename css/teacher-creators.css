@@ -1,73 +1,131 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
+html,
+body {
+  font-family: Advent Pro;
+  width: 100%;
+  height: 100%;
+}
+
+img {
+  margin-left: 30px;
+}
+
+.main_header h1 {
+  padding: 10px;
+  height: auto;
+  width: 20%;
+}
+
+.navigation p {
+  padding :5px;
+ font-size: 20px;
+ font-weight: bold;
+}
+.main_header {
+  border-bottom: 1px black solid;
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 1;
+}
+
+.navigation li a {
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.navigation ul {
+  margin-top: 15px;
+}
+
+.navigation li {
+  padding-left: 50px;
+  display: inline-block;
+}
+
+.link_header::after {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: black;
+  transition: width 0.3s;
+}
+
+.link_header:hover::after {
+  width: 100%;
+  transition: width 0.3s;
+}
+.container {
+  margin-bottom: 40px;
+}
+/* 
+.characters-container h1{
+
+} */
 
 .characters-container {
-  padding: 100px;
-  margin: 0 auto;
+  padding: 40px;
+  margin: 40px;
   max-width: 1500px;
   text-align: center;
 }
 
-#characterList {
+#staff-container {
   padding-inline-start: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: 20px;
 }
 
-.characters {
+.staff-card {
+  width: 280px;
+  height: 430px;
+  text-align: center;
   list-style-type: none;
   background: white;
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.2s linear;
-  padding: 40px 50px;
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-template-areas:
-    "name image"
-    "house image"
-    "span image";
-  text-align: left;
+  padding: 80px 20px;
 }
 
-.characters:hover {
+.staff-card > h4 {
+  margin-bottom: 20px;
+}
+
+.staff-card:hover {
   box-shadow: 2px 8px 45px rgba(0, 0, 0, 0.35);
   transform: translate3D(0, -2px, 0);
 }
 
-.characters > h2 {
-  grid-area: name;
-  margin-bottom: 0px;
-}
-
-.characters > p {
-  grid-area: house;
-  margin: 0;
-  margin-top: 18px;
-}
-
-
-.characters > img {
+.staff-img {
   max-height: 200px;
-  max-width: 100px;
-  grid-area: image;
+  max-width: 150px;
 }
 
-
-.span {
-  max-height: 200px;
-  max-width: 100px;
-  grid-area: span;
+button {
+  padding: 5px 10px;
+  margin: 10px;
 }
 
-.span {
+#add-staff-btn {
+  background-color: rgb(107, 230, 134);
+}
+
+h3 {
   display: none;
 }
-.characters:hover .span {
+.staff-card:hover h3 {
   display: block;
 }
