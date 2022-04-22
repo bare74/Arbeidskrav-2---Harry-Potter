@@ -28,6 +28,18 @@ async function fetchStudents() {
   });
 }
 
+function addBackgroundColorToStudent(student, el) {
+  if (student.house === "Slytherin") {
+    el.style.backgroundColor = "rgb(107, 230,134)";
+  } else if (student.house === "Gryffindor") {
+    el.style.backgroundColor = "rgb(151, 184, 226)";
+  } else if (student.house === "Hufflepuff") {
+    el.style.backgroundColor = "rgb(231, 168, 226)";
+  } else if (student.house === "Ravenclaw") {
+    el.style.backgroundColor = "rgb(231, 202, 140)";
+  }
+}
+
 function searchStudent() {
   const searchBar = document.querySelector('#searchbar');
 
@@ -35,17 +47,19 @@ function searchStudent() {
 
   studentArray.filter((student) => {
     if (student.name.toLowerCase().includes(searchValue)) {
-      console.log(student);
+      studentContainer.innerHTML = '';
       studentContainer.innerHTML += `
         <div class='student-card'>
-          <p>Navn: ${student.name}</p>
+          <p>${student.name}</p>
           <img class='student-img' alt='${!student.image ? 'Missing image avatar' : student.name + ' image'}' src=${!student.image ? "./assets/avatar.png" : student.image} />
-          <p>Hus: ${student.house}</p>
+          <p>${student.house}</p>
           <p>Alder: ${2022 - student.yearOfBirth}</p>
           <p>I live: ${student.alive ? 'Ja' : 'Nei'}</p>
         </div>
       `;
-      console.log(student.name);
+
+      const card = document.querySelector('.student-card');
+      addBackgroundColorToStudent(student, card);
     }
   });
 }
