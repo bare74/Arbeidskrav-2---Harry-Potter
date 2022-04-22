@@ -1,9 +1,10 @@
+import { API } from "../script/index.js";
 let array = [];
 let staffArray = [];
 
 async function fetchStaff() {
   try {
-    let response = await fetch("http://hp-api.herokuapp.com/api/characters"); // or API as defined
+    let response = await fetch( API ); // or API as defined
     let data = await response.json();
     array.push(data);
 
