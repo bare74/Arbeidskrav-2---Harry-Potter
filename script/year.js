@@ -47,7 +47,7 @@ function searchStudent() {
 
   studentArray.filter((student) => {
     if (student.name.toLowerCase().includes(searchValue)) {
-      console.log(student);
+      studentContainer.innerHTML = '';
       studentContainer.innerHTML += `
         <div class='student-card'>
           <p>${student.name}</p>
