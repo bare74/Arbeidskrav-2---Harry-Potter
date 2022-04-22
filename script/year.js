@@ -60,6 +60,7 @@ function searchStudent() {
 
       const card = document.querySelector('.student-card');
       addBackgroundColorToStudent(student, card);
+      searchBar.value = '';
     }
   });
 }
