@@ -14,9 +14,7 @@ body{
   background-position: center;
  
 }
-.outer-container{
-  width: 100%;
-}
+
 .searchWrapper{
   margin-top: 45px;
   text-align: center;
@@ -75,7 +73,6 @@ font-size: 20px;
   filter: none;
 }
 #show-content {
-
   display: grid;
   grid-template-columns: repeat(5, 200px);
   justify-content: center;
