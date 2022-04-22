@@ -75,9 +75,10 @@ font-size: 20px;
   filter: none;
 }
 #show-content {
-  position: relative;
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 200px);
+  justify-content: center;
   gap: 15px 15px;
   margin: 40px 0;
 }
@@ -93,7 +94,7 @@ font-size: 20px;
 }
 
 .student-img {
-  position: relative;
+
   top: 5px;
   height: 200px;
   width: 150px;
