@@ -74,9 +74,9 @@ font-size: 20px;
 }
 #show-content {
   position: relative;
-  display: flex;
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 15px 15px;
   margin: 40px 0;
 }
 
