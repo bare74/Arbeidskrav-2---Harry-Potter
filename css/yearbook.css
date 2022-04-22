@@ -14,7 +14,9 @@ body{
   background-position: center;
  
 }
-
+.outer-container{
+  width: 100%;
+}
 .searchWrapper{
   margin-top: 45px;
   text-align: center;
