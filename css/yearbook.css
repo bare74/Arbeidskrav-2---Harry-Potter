@@ -29,6 +29,7 @@ body{
   height: 35px;
   font-weight: 600;
   cursor: pointer;
+background-color: rgb(107, 230, 134);
 }
 /*Adding new Student*/
 .add-New-Character{
