@@ -36,12 +36,13 @@ main {
 }
 
 .start-class-btn {
-  max-width: 325px;
-  padding: 16px 25px;
+ padding: 5px 10px;
+  margin: 10px;
 }
 
 .delete-student-btn {
-  padding: 10px 25px;
+ padding: 5px 10px;
+  margin: 10px;
 }
 
 .start-class-btn,
