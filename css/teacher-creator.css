@@ -60,6 +60,7 @@ body {
 button {
   padding: 5px 10px;
   margin: 10px;
+  background-color: rgb(107, 230, 134);
 }
 
 #add-staff-btn {
