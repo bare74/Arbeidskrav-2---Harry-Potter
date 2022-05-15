@@ -36,13 +36,14 @@ body{
   color: black;
 font-size: 20px;
 }
-.add-New-Character h2{
+/*.add-New-Character h2{
   color: yellow
 }
 .add-New-Character p{
   color:yellow;
   font-weight: bold;
-}
+}*/
+
 .add-New-Character input{
   width: 350px;
   height: 35px;
