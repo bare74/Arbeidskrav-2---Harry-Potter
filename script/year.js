@@ -122,7 +122,7 @@ function showStudents(hogwartsHouse) {
     img.classList.add("student-img");
     img.src = hogwartsHouse[i].image;
     if (hogwartsHouse[i].image === "") {
-      img.src = hogwartsHouse[i].image = "/assets/avatar.png";
+      img.src = hogwartsHouse[i].image = "./assets/avatar.png";
     }
 
     let studentName = document.createElement("h3");
@@ -171,7 +171,7 @@ function renderData(hogwartsHouse) {
 
 let createStudent = document.querySelector(".save-btn");
 createStudent.addEventListener("click", () => {
-  let imgSrc = "/assets/avatar.png";
+  let imgSrc = "./assets/avatar.png";
   let studentName = document.querySelector(".name-input").value;
   let studentAge = document.querySelector(".age-input").value;
   let studentHouse = document.getElementById("houseList").value;
